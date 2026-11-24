@@ -23,7 +23,7 @@ The mirror holds by construction, not by discipline: a deterministic mechanism o
 ## Consequences
 
 - Git stores symlinks. On a Windows checkout without symlink support, `AGENTS.md` becomes a text file containing the path; that platform is not a target today.
-- An editor or tool that replaces the symlink with a regular file on save breaks the mirror. A future check in `core/checks/` should verify that every `AGENTS.md` is a symlink to its sibling `CLAUDE.md`.
+- An editor or tool that replaces the symlink with a regular file on save breaks the mirror. A future check in the core should verify that every `AGENTS.md` is a symlink to its sibling `CLAUDE.md`.
 
 ## Alternatives considered
 

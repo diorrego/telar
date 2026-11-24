@@ -2,7 +2,7 @@
 id: F-0000
 status: open          # open | triaged | fixing | fixed | verified | wont-fix
 severity: medium      # critical | high | medium | low
-area:                 # checks | verify | skills | rules | agents | workflows | evals | vault | docs
+area:                 # core | vault | evidence | docs
 found: YYYY-MM-DD
 found_in:             # commit or version
 fixed_by:             # commit, pull request, or ../../projects/{project}/vN/PLAN.md

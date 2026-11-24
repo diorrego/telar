@@ -2,63 +2,75 @@
 
 ## In one line
 
-Telar is an agentic software workshop: the environment, tools and habits with which a small team, starting with one engineer, builds ambitious, high-quality software with coding agents, without losing understanding of what it ships.
+Telar is a method, and the open framework that implements it, with which an agent-assisted software workshop models its own rules ([ADR 0008](../decisions/0008-telar-is-a-method-and-framework.md)).
+
+## What "modeling its own rules" means
+
+Every workshop already has rules: who can start work, what must be approved and by whom, what an agent may touch, how a change is verified, what counts as done. Most of them live in people's heads, in chat history or in a long instruction file that agents follow about 60% of the time ([research](research.md), R13).
+
+Modeling a rule means three things:
+
+1. **Written down**, in a versioned place, with the decision or correction that created it.
+2. **Placed at the layer that enforces it**: the architecture if possible, then a deterministic check, then a verification, then a skill, and prose only when judgment is unavoidable (principle 3).
+3. **Measured**: the workshop can tell whether the rule works, for example whether the correction that created it stops recurring.
+
+Every time a person has to correct an agent, a rule is missing. That correction is Telar's raw material.
 
 ## The problem
 
-- Coding agents keep getting better under the same harness. They now run for many minutes per task, and the volume of code they produce keeps growing.
+- Coding agents keep getting better under the same harness. They run for many minutes per task, and the volume of code they produce keeps growing.
 - Human attention does not grow. Starting a project got easy; maintaining one did not. The human sets the pace.
 - Agents are rewarded for finishing, not for fit. Without a strong environment, volume turns into slop, and agents copy the slop they find.
 - Automating a loop that produces slop produces more slop, at a higher token bill.
 
-## The thesis: workshop before factory
+## The thesis: rules, then the workshop, then the factory
 
-A software factory (a code-defined, closed loop that runs agents through the whole development cycle and measures and improves them) is where this ends up. But a factory amplifies whatever its inner loop produces.
+The order Diego took from the research (2026-11-24): first rules, contracts and tests; then the workshop, where people review inside the flow and push back; then the factory, where agents triage, specify, build, review and verify, everything is measured, and the factory proposes how to avoid its own repeated mistakes. The factory lives in an environment isolated from people's machines and works where people already work.
 
-So Telar builds the workshop first: an environment where agent output is trustworthy because it is constrained by deterministic checks, proven by verification artifacts, and reviewed by a human only where judgment matters. Every correction a human makes is treated as a defect of the workshop and encoded so it does not recur. The factory comes later, built on that foundation by the same mechanism.
+A factory amplifies whatever its inner loop produces, so the order matters. What the factory learns returns to the workshop as new rules.
+
+## Installations
+
+An installation is a workshop that uses Telar to model its rules.
+
+| Installation | Role | Status |
+|---|---|---|
+| woku | First installation and the use case Telar is built for. Telar keeps abstracting what is generic out of what woku needs | Current, and the only one for now |
+| Telar itself | Telar developed with Telar | Later. Meanwhile this repository uses the method by hand: plans with a go, corrections ledger, decisions |
+| A public example project | Proof that any workshop can adopt Telar from the README alone | Later |
+
+Woku's rules, repositories and data stay in woku's private repositories. This repository holds only what is generic.
 
 ## What Telar is
 
-- **A core** (`core/`): the workshop defined as code (checks, verification, skills and rules first; agents, workflows and evals later), versioned, and applied to a target repository.
-- **A method:** the corrections ledger, the trust pyramid, review based on evidence, owner summaries, and plans that wait for a human go.
-- **Its own first user:** Telar is built with Telar.
+- **A method:** model rules from corrections, encode them at the lowest layer, keep humans at the decisions that matter, review evidence instead of diffs, measure against the way the team works today.
+- **A framework:** the part every installation shares (`core/`). Its structure is being defined in the [`core-definition`](../projects/core-definition/v1/PLAN.md) project, before any of it is built.
 
 ## What Telar is not
 
-- Not a coding agent or a harness. It uses existing ones (Claude Code, Codex, Pi and others) and stays thin enough to switch between them.
+- Not a coding agent or a harness. It uses existing ones (Claude Code, Codex, OpenCode and others) and stays thin enough to switch between them.
 - Not a prompt collection. Prose is the last layer, not the first.
 - Not an "AI teammate" or a swarm of personal agents.
-- Not a cloud factory product, at least not before the workshop works.
-
-## Stages
-
-Proposed in [ADR 0006](../decisions/0006-workshop-before-factory.md). Each stage starts when the previous one meets its exit criteria.
-
-| Stage | Focus | Core folders | Exit criteria (proposed) |
-|---|---|---|---|
-| 1. Workshop | The inner loop: one human with interactive agents. Trust layers, corrections ledger, verification artifacts, owner summaries | `checks/`, `verify/`, `skills/`, `rules/` | Corrections per session trend down over a sustained period; a typical change is accepted on verification evidence instead of a line by line read; every recurring correction is encoded |
-| 2. Loop | The outer loop: workflows as code, recorded runs, scores, self-improvement proposals as pull requests to the core | `agents/`, `workflows/`, `evals/` | An idea runs to a shipped change through the loop with human gates only at spec review and product review; at least one core improvement proposed from scores is accepted |
-| 3. Factory | Scale: unattended runs, benchmarks on own data, model routing, durable and suspendable runs, sandboxes | to be defined | to be defined |
+- Not a hosted platform. Infrastructure is an adoption barrier; the first version needs only a forge, an agent CLI and Markdown ([research](research.md), section 4).
 
 ## How success is measured
 
-Candidate metrics. The projects that build them define them precisely.
+Per accepted change, against the way the team works today (a person with an interactive agent), on the same tasks and criteria, from timestamps rather than impressions. The precise definitions are part of `core-definition`.
 
 | Metric | What it tells | Source |
 |---|---|---|
-| Corrections per session | Is the workshop learning? | Ronacher |
-| Recurrence of corrections | Do encodings work? | Telar |
-| Revert rate | Is trust justified? (reference point: about 0.5% at high volume) | Tan |
-| Share of changes accepted on evidence | Is review shrinking to artifacts? | Tan, Lloyd |
-| Human interactions per change | How much attention does a change cost? | Lloyd |
-| Cost per change, cycle time | Is it efficient? | Lloyd |
-| Size of `core/rules/` | Is prose turning into checks? | Telar |
+| Human minutes per accepted change (clarify, review, intervene) | What a change costs in attention | Critical review; Lloyd |
+| Corrections at 14 and 30 days, and reverts | Whether accepted changes were really good | Critical review; Tan |
+| Corrections per session, and their recurrence | Whether the workshop is learning, and whether its rules work | Ronacher; Telar |
+| Cost per accepted change, including failed attempts | Whether it is efficient | Critical review; Lloyd |
+| Cycle time and time waiting for a person | Where the time goes | Conceptual framework; Lloyd |
+| Share of changes accepted on evidence rather than a line by line read | Whether review is shrinking to artifacts | Tan; Lloyd |
 
 ## Open questions
 
-- How the core is installed in a target repository: copied, generated, vendored, or as a package.
-- Which harness comes first, and how much harness-specific packaging is acceptable.
-- Where run records and verification artifacts live, and what is kept.
-- Local only, or local plus cloud sandboxes, and from which stage.
-- Which real product is the first target besides Telar itself.
-- Build or borrow for stage 2 and stage 3 infrastructure (orchestration, sandboxes, inference).
+The full list is in the [`core-definition` diagnosis](../projects/core-definition/v1/DIAGNOSIS.md). The ones that shape the vision:
+
+- Whether "done" means merged or verified in production, for the first version.
+- Whether research is its own stage, with its own decision, from the first version.
+- When the isolated, always-available environment arrives, and with what entry criteria.
+- How context is managed: a fresh session per stage, a compaction threshold, or both.

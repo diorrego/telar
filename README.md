@@ -1,14 +1,14 @@
 # Telar
 
-Telar is an agentic software workshop: the environment, tools and habits with which a small team, starting with one engineer, builds ambitious, high-quality software with coding agents without losing understanding of what it ships.
+Telar is a method, and the open framework that implements it, with which an agent-assisted software workshop models its own rules: who can start work, what must be approved, what an agent may touch, what counts as done. Each rule is written down, placed at the layer that enforces it, and measured. Woku is the first installation.
 
-> **Status: design phase, documentation only.** There is no code yet. See [ADR 0005](vault/decisions/0005-documentation-before-code.md).
+> **Status: design phase, documentation only.** There is no code yet ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). The current project, [`core-definition`](vault/projects/core-definition/v1/PLAN.md), defines what the core must contain before any of it is built.
 
 ## The idea
 
 Coding agents get better every few months. The attention of the people directing them does not. Telar starts from that constraint.
 
-Before automating anything (the "software factory"), Telar builds the workshop: a codebase and an environment where agent output can be trusted because it is constrained by deterministic checks, proven by verification artifacts, and reviewed by a human only where judgment is needed. Every time a human has to correct an agent, the correction is treated as a defect of the workshop and encoded so it does not happen again. Automation and self-improving loops come later, built on that foundation with the same mechanism.
+The order comes from the research: first rules, contracts and tests; then the workshop, where people review inside the flow and push back; then the factory, where agents run the development cycle and everything is measured. Every time a person has to correct an agent, a rule is missing; Telar records the correction and encodes it at the lowest layer that prevents it, preferring a deterministic check over another line of instructions.
 
 Read more in the [vision](vault/foundations/vision.md) and the [principles](vault/foundations/principles.md).
 
@@ -21,16 +21,15 @@ telar/
 ├── vault/               the workshop notebook
 │   ├── foundations/     vision, principles, research synthesis, glossary
 │   ├── decisions/       architecture decision records (ADRs)
+│   ├── evidence/        the research: conversations, documents, prototype, figures (translated)
 │   ├── projects/        one folder per initiative, one subfolder per iteration (v1/, v2/...)
 │   ├── qa/              findings, agent corrections, exploratory sessions
 │   ├── templates/       templates for every note type
 │   └── views/           board.md: plans, findings and corrections by status
-└── core/                Telar itself: the workshop defined as code (contracts only, for now)
-    ├── checks/  verify/  skills/  rules/      stage 1: workshop
-    └── agents/  workflows/  evals/            stage 2: loop
+└── core/                the framework every installation shares (being defined; no code yet)
 ```
 
-The vault is where Telar is thought through. The core is Telar itself. Nothing lands in `core/` without a project in `vault/projects/` that explains why.
+The vault is where Telar is thought through. The core is the framework; its structure is defined in a vault project before anything lands in it.
 
 ## Where to start
 
@@ -41,7 +40,7 @@ The vault works as an Obsidian vault (the board uses the Dataview plugin), but e
 
 ## Origin
 
-Telar comes out of research on agentic software factories: a literature review, a critical review of an earlier factory design against recent studies, and talks by Armin Ronacher, Lauren Tan and Zach Lloyd. The synthesis, with every reference and the decisions each one drove, is in [vault/foundations/research.md](vault/foundations/research.md).
+Telar comes out of research on agentic software factories: a literature review, a conceptual framework, pilot designs, a critical review of those designs against recent studies, and talks by Armin Ronacher, Lauren Tan and Zach Lloyd. The material itself, translated, is in [vault/evidence/](vault/evidence/README.md); the synthesis, with every reference and the decisions each one drove, is in [vault/foundations/research.md](vault/foundations/research.md).
 
 ## License
 

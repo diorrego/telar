@@ -22,14 +22,15 @@ See [`foundations/research.md`](../foundations/research.md).
 
 Telar is built in three stages. Each starts only when the previous one meets its exit criteria, defined in [`foundations/vision.md`](../foundations/vision.md).
 
-1. **Workshop.** The inner loop. Core folders: `checks/`, `verify/`, `skills/`, `rules/`.
-2. **Loop.** The outer loop. Core folders: `agents/`, `workflows/`, `evals/`.
-3. **Factory.** Scale. Folders created when it gets a plan.
+1. **Workshop.** The inner loop.
+2. **Loop.** The outer loop.
+3. **Factory.** Scale.
+
+> **Note, 2026-11-24.** The mapping of these stages to `core/` folders was withdrawn by [ADR 0008](0008-telar-is-a-method-and-framework.md). The sequence itself is an input to the maturity phase of the [`core-definition`](../projects/core-definition/v1/PLAN.md) project, together with the order Diego stated on 2026-11-24 (rules, contracts and tests; then the workshop; then the factory). That phase proposes whether this ADR is accepted as revised or superseded.
 
 ## Consequences
 
 - No orchestration, cloud sandboxes, benchmarks or model routing until the workshop stage has exit evidence.
-- Stage 2 folders exist now only as contracts, so the layout is visible from the start.
 - The exit criteria are themselves proposals and get refined by the first projects.
 
 ## Alternatives considered

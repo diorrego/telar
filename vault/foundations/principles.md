@@ -18,7 +18,7 @@ A factory amplifies its inner loop. If the inner loop produces slop, automation 
 
 Order of preference: architecture and API design; deterministic checks (lint, types, boundaries, tests); verification (runtime, property-based, formal); prose last.
 
-*Source:* Tan (the inverse pyramid). *In Telar:* five layers, splitting prose into skills and rules: 1 architecture, 2 check, 3 verification, 4 skill, 5 rule. The core layout follows this order.
+*Source:* Tan (the inverse pyramid). *In Telar:* five layers, splitting prose into skills and rules: 1 architecture, 2 check, 3 verification, 4 skill, 5 rule. The corrections ledger encodes in this order.
 
 ## 4. Every correction is a defect of the workshop
 
@@ -30,7 +30,7 @@ When a human has to correct an agent, the environment allowed the mistake. Log i
 
 Agents produce verification artifacts a human can judge quickly: screenshots, videos, state charts, check and test output, a one-minute summary. Line by line review is reserved for where checks and verification have not yet earned trust.
 
-*Source:* Tan, Lloyd; Ronacher (summaries before verification). *In Telar:* `core/verify/` and the owner review stage.
+*Source:* Tan, Lloyd; Ronacher (summaries before verification). *In Telar:* verification artifacts and the owner review stage.
 
 ## 6. Push back
 

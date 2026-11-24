@@ -1,0 +1,51 @@
+# Evidence. Translated from Spanish on 2026-11-24. Original: prototipos/warp/factory.yaml (2026-11-22). Schema keys unchanged; natural-language values translated.
+# yaml-language-server: $schema=https://app.warp.dev/api/v1/factory-files/schemas/v1alpha1/factory.schema.json
+# Review template. Replace the fictitious repositories when preparing an authorized test.
+schemaVersion: v1alpha1
+name: support-pilot
+repositories:
+  - {owner: example, name: support-app}
+  - {owner: example, name: engineering-vault}
+  - {owner: example, name: qa-vault}
+agentDefaults:
+  model: auto
+blueprint:
+  worker: foreman
+  start: {to: research}
+  stages:
+    research:
+      worker: foreman
+      inputs: Support request, authorized guides and starting revisions.
+      prompt: Compare the request against the guides. Distinguish facts, assumptions and contradictions. Record the diagnosis and link the sources by revision.
+      outputs: Traceable diagnosis with the open question or the proposed scope.
+      to: spec
+    spec:
+      worker: foreman
+      prompt: Propose a minimal specification for answering about access and escalating charge queries. Record criteria and SHA of the proposal in the vault. Present the version to product.
+      outputs: Immutable reference to the specification and decision on that version.
+      gates:
+        scope:
+          prompt: Do you approve this version, request changes or discard the work item?
+          outputs: Decision attributed to the responsible person and linked to the presented revision.
+      to:
+        - {stage: end, when: The responsible person discards the work item.}
+        - {stage: research, when: The person asks to revisit the assumptions or provide evidence.}
+        - {stage: spec, when: The person asks to adjust the proposal without new research.}
+        - {stage: build, when: The responsible person explicitly approves this revision of the specification.}
+    build:
+      worker: builder
+      prompt: Implement the approved revision on a branch of the test repository. If QA returned findings, fix them. Link the change proposal and its revisions in the log.
+      outputs: Test PR with code SHA and reference to the specification.
+      to: verify
+    verify:
+      worker: verifier
+      prompt: Independently verify the candidate revision. Repeat the access and charge queries. If there is an interface, run Playwright with Chromium. Record revision, environment, evidence and pending items.
+      outputs: Result per criterion and link to the QA vault record.
+      to:
+        - {stage: build, when: The revision has a reproducible failure within the agreed scope.}
+        - {stage: handoff, when: The revision passes the criteria or requires human intervention due to a blocker.}
+    handoff:
+      worker: foreman
+      prompt: Return to the thread the diagnosis, the approved specification, the commits and the QA evidence. Distinguish a delivery verified in the test environment from blocked work. End the test without merging or deploying.
+      outputs: Dossier ready for a human decision with an explicit target and pending items.
+      to: end

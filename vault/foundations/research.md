@@ -2,7 +2,7 @@
 
 The research behind Telar: how it unfolded, what each source claims, and which decisions each one drove. Claims are attributed to their authors; Telar's own positions are marked **Telar**. Talk timestamps are mm:ss; paper citations give the page where possible.
 
-The talk transcripts and the earlier working documents (literature review, conceptual framework, pilot designs, critical review, kit design) live in the research workspace, outside this repository. This file is their public synthesis.
+The research conversations and working documents (literature review, paper, conceptual framework, pilot designs, critical review, kit design) are in [`vault/evidence/`](../evidence/README.md), translated into English. The talk transcripts are not copied (third-party content); they are cited by public link. This file is the synthesis.
 
 Synthesis date: 2026-11-24.
 
@@ -177,7 +177,7 @@ The critical review turned the sources above into the direction Telar starts fro
 | 10 | **A narrow first version.** One forge, one agent CLI, Markdown memory; no server, database or cloud. A second executor, chat triggers, durable queues, multi-project and unattended self-improvement come later, each with entry criteria. | R6, T5, critical review |
 | 11 | **A public kit.** Every infrastructure dependency is an adoption barrier: a team should be able to install it in an afternoon. Open, versioned formats outlast tools. Portability is proven with a public example project anyone can run. | T1, T5 |
 
-**Telar:** these decisions are the starting point. [`vision.md`](vision.md), [`principles.md`](principles.md) and [ADR 0006](../decisions/0006-workshop-before-factory.md) do not yet reflect all of them (in particular 2, 3, 8, 9 and 11); reconciling them is pending Diego's review.
+**Telar:** decision 11 is settled by [ADR 0008](../decisions/0008-telar-is-a-method-and-framework.md), with woku as the only installation for now. The others are the input of the [`core-definition`](../projects/core-definition/v1/DIAGNOSIS.md) project, which turns them into a catalog of non-negotiables (N-01 onward) for Diego to accept or reject one by one.
 
 ## 5. Agreements and tensions
 
@@ -223,7 +223,26 @@ Consulted while designing, not as evidence of effect.
 | Forge, channels and operations | [GitHub App installation tokens](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app), [Slack Socket Mode](https://docs.slack.dev/apis/events-api/using-socket-mode/), [Google SRE: Managing Incidents](https://sre.google/sre-book/managing-incidents/) |
 | Infrastructure considered and deferred | [Terraform](https://developer.hashicorp.com/terraform/intro), [AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html), [pg-boss](https://github.com/timgit/pg-boss), [portable-pty](https://docs.rs/portable-pty/), [xterm.js](https://xtermjs.org/) |
 
-## 8. Open questions
+## 8. Prior art: methods and frameworks
+
+Researched on 2026-11-24 to test the definition in [ADR 0008](../decisions/0008-telar-is-a-method-and-framework.md).
+
+| Precedent | What it shows | Effect on Telar |
+|---|---|---|
+| [Scrum Guide 2020](https://www.scrumguides.org/scrum-guide.html) | A "lightweight framework", "purposefully incomplete", that defines only what its theory requires; teams fill in the rest | Telar's method defines a minimal set of non-negotiables; each workshop models the rest |
+| Rails, extracted from Basecamp ([origin story](https://thenextweb.com/news/the-ruby-on-rails-origin-story); DHH, RailsConf 2013) | "Frameworks are not inventions, they're extractions"; the bad features came from inventing ahead of need | Telar is built by serving woku and abstracting from it |
+| Roberts and Johnson, [*Patterns for Evolving Frameworks*](https://nzjohng.github.io/publications/papers/EFPL.pdf) | "Three Examples": a framework is generalized from about three applications (the rule of three) | A mechanism or format is declared stable only after more than one installation uses it |
+| [GitHub Spec Kit](https://developer.microsoft.com/blog/spec-driven-development-spec-kit) | A project "constitution" of principles and constraints governs spec-driven work | Repository-resident rules are common practice |
+| [Kiro](https://kiro.dev/docs/steering/) | Markdown steering rules per workspace, specs per feature, event-driven hooks | Same |
+| [BMAD Method](https://github.com/ResourcefulAI/bmad-method) | A method of role-based agents and guided workflows built on a core | "Method plus core" is an established shape |
+| [Agent OS](https://github.com/buildermethods/agent-os) | Discovers a codebase's standards from its code and injects them into agent work | Rules can be harvested from the workshop's own code and corrections |
+| [AGENTS.md](https://openai.com/index/agentic-ai-foundation/), now in the Agentic AI Foundation (Linux Foundation) | An open format for project instructions | Adopt instead of inventing ([ADR 0004](../decisions/0004-claude-md-canonical-agents-md-symlink.md) already mirrors it) |
+| [Agent Skills](https://agentskills.io/) | An open, portable format for skills (`SKILL.md`) | Candidate format for layer 4 of the trust pyramid |
+| [Self-hosting compilers](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)) and [dogfooding](https://www.nngroup.com/articles/dogfooding/) | Self-hosting proves a tool works but amplifies its own bugs and needs a trusted previous version; dogfooding biases a product toward its builders' own use cases | Why Telar-for-Telar comes later, and why woku, not this repository, is the primary signal |
+
+**Telar:** in what was found, the agent frameworks keep project rules as repository-resident prose, and some add hooks. None ties each rule to the correction that created it, places it at the layer that enforces it, and measures whether it works. That is the gap Telar's method targets.
+
+## 9. Open questions
 
 - How to measure corrections and human minutes reliably across harnesses.
 - Which verification is worth its token cost for which kind of change (T2's 70% is a data point, not a target).

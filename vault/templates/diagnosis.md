@@ -11,6 +11,14 @@
 | Harness and model | |
 | Method | What was read, run or measured |
 
+## Evidence inventory
+
+Every relevant item in `vault/evidence/` and any other source, with what it contributes.
+
+| ID | Evidence | Date | Read (in full, partially, not read) | Contributes |
+|---|---|---|---|---|
+| E1 | | | | |
+
 ## Question
 
 What this diagnosis must answer, in one or two sentences.

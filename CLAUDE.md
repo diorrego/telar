@@ -4,22 +4,23 @@ Instructions for coding agents working in this repository. `AGENTS.md` is a syml
 
 ## What Telar is
 
-Telar is an agentic software workshop: the checks, verification, skills, rules, agent definitions, workflows and evals with which a small team builds high-quality software with coding agents. It is built workshop first, factory later ([ADR 0006](vault/decisions/0006-workshop-before-factory.md)).
+Telar is a method, and the open framework that implements it, with which an agent-assisted software workshop models its own rules. Woku is the first and, for now, only installation; Telar is built by serving woku and keeps abstracting what is generic. Woku-internal details never enter this public repository ([ADR 0008](vault/decisions/0008-telar-is-a-method-and-framework.md)).
 
 `vault/foundations/vision.md` and `vault/foundations/principles.md` are the product definition. Read them before proposing anything.
 
 ## Current phase: documentation only
 
-There is **no code** in this repository, and none is written until a plan in `vault/projects/` has `status: active` and its current phase calls for code ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). Until then the work is research synthesis, decisions, diagnoses and plans, and the folder contracts in `core/*/README.md`. If a task seems to need code, write or update the plan instead and stop there.
+There is **no code** in this repository, and none is written until a plan in `vault/projects/` has `status: active` and its current phase calls for code ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). Until then the work is research synthesis, decisions, diagnoses and plans. The current project is [`core-definition`](vault/projects/core-definition/v1/PLAN.md). If a task seems to need code or structure in `core/`, write or update the plan instead and stop there.
 
 ## Repository map
 
 | Path | What it is | Rules |
 |---|---|---|
-| `vault/` | The workshop notebook: foundations, decisions, projects, QA, templates, views | `vault/CLAUDE.md` |
+| `vault/` | The workshop notebook: foundations, decisions, evidence, projects, QA, templates, views | `vault/CLAUDE.md` |
+| `vault/evidence/` | The research conversations and documents, translated. Read the relevant ones before proposing anything | `vault/CLAUDE.md`, "Evidence" |
 | `vault/projects/` | One folder per initiative, each iteration self-contained in `v1/`, `v2/`... | `vault/projects/CLAUDE.md` |
 | `vault/qa/` | Findings (defects), corrections (times a human had to push back on an agent), exploratory sessions | `vault/qa/CLAUDE.md` |
-| `core/` | Telar itself: the workshop defined as code. Folder contracts only, for now | `core/CLAUDE.md` |
+| `core/` | The framework every installation shares. Not defined yet: only its instructions and a placeholder | `core/CLAUDE.md` |
 
 Read a folder's `CLAUDE.md` before working in it.
 

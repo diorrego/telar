@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="810" viewBox="0 0 1360 810" role="img" aria-labelledby="title desc">
+<!-- Evidence. Translated from Spanish on 2026-11-24. Original: fabrica-de-software-tradicional.svg (research workspace). -->
+
+<title id="title">How a traditional software factory works</title>
+<desc id="desc">Management prioritizes the demand. Teams understand the need, define the requirement, design, build, validate and release to production. In operation they detect incidents and improvement opportunities. Incident response seeks to restore the service. Permanent fixes and improvements are prioritized and return to the delivery cycle. Shared capabilities support all processes.</desc>
+<defs>
+<marker id="ink" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#254452"/></marker>
+<marker id="teal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#11665f"/></marker>
+<marker id="rust" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="#9c4c2d"/></marker>
+</defs><g font-family="DejaVu Sans, sans-serif">
+<rect x="0" y="0" width="1360" height="810" rx="0" fill="#fafbf8" stroke="none" stroke-width="1.4"/>
+<text x="47" y="55" text-anchor="start" font-size="36" font-weight="700" fill="#203b46">How a traditional software factory works</text>
+<rect x="47" y="81" width="1266" height="63" rx="9" fill="#e8eeec" stroke="none" stroke-width="1.4"/>
+<text x="67" y="119" text-anchor="start" font-size="20" font-weight="700" fill="#203b46">Management and demand intake</text>
+<text x="477" y="119" text-anchor="start" font-size="16" font-weight="400" fill="#203b46">Business and product prioritize objectives, assign capacity and agree on owners.</text>
+<text x="47" y="195" text-anchor="start" font-size="23" font-weight="700" fill="#203b46">Creation and delivery</text>
+<path d="M 139 144 V 167 H 23 V 266 H 45" fill="none" stroke="#254452" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ink)"/>
+<rect x="47" y="225" width="193" height="90" rx="9" fill="#ffffff" stroke="#b5c7ca" stroke-width="1.4"/>
+<text x="143.5" y="254" text-anchor="middle" font-size="15.5" font-weight="700" fill="#203b46">Clarify the need</text>
+<text x="143.5" y="278" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">Problem, user and</text>
+<text x="143.5" y="297" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">expected outcome</text>
+<path d="M 240 266 H 259" fill="none" stroke="#254452" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ink)"/>
+<rect x="261" y="225" width="193" height="90" rx="9" fill="#ffffff" stroke="#b5c7ca" stroke-width="1.4"/>
+<text x="357.5" y="254" text-anchor="middle" font-size="15.5" font-weight="700" fill="#203b46">Define requirement</text>
+<text x="357.5" y="278" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">Scope and acceptance</text>
+<text x="357.5" y="297" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">criteria</text>
+<path d="M 454 266 H 473" fill="none" stroke="#254452" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ink)"/>
+<rect x="475" y="225" width="193" height="90" rx="9" fill="#ffffff" stroke="#b5c7ca" stroke-width="1.4"/>
+<text x="571.5" y="254" text-anchor="middle" font-size="15.5" font-weight="700" fill="#203b46">Design and plan</text>
+<text x="571.5" y="278" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">Solution, dependencies</text>
+<text x="571.5" y="297" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">and partial deliveries</text>
+<path d="M 668 266 H 687" fill="none" stroke="#254452" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ink)"/>
+<rect x="689" y="225" width="193" height="90" rx="9" fill="#ffffff" stroke="#b5c7ca" stroke-width="1.4"/>
+<text x="785.5" y="254" text-anchor="middle" font-size="15.5" font-weight="700" fill="#203b46">Build and integrate</text>
+<text x="785.5" y="278" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">Code and integrated</text>
+<text x="785.5" y="297" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">changes</text>
+<path d="M 882 266 H 901" fill="none" stroke="#254452" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ink)"/>
+<rect x="903" y="225" width="193" height="90" rx="9" fill="#ffffff" stroke="#b5c7ca" stroke-width="1.4"/>
+<text x="999.5" y="254" text-anchor="middle" font-size="15.5" font-weight="700" fill="#203b46">Verify and validate</text>
+<text x="999.5" y="278" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">Technical tests and</text>
+<text x="999.5" y="297" text-anchor="middle" font-size="14" font-weight="400" fill="#203b46">functional acceptance</text>
+<path d="M 1096 266 H 1115" fill="none" stroke="#254452" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ink)"/>
+<rect x="1117" y="225" width="193" height="90" rx="9" fill="#155d59" stroke="#155d59" stroke-width="1.4"/>
+<text x="1213.5" y="254" text-anchor="middle" font-size="15.5" font-weight="700" fill="#ffffff">Ship to production</text>
+<text x="1213.5" y="278" text-anchor="middle" font-size="14" font-weight="400" fill="#ffffff">Deploy, enable</text>
+<text x="1213.5" y="297" text-anchor="middle" font-size="14" font-weight="400" fill="#ffffff">and check usage</text>
+<path d="M 997 315 V 344 H 572 V 317" fill="none" stroke="#667b81" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 5" marker-end="url(#ink)"/>
+<rect x="669" y="331" width="234" height="23" rx="1" fill="#fafbf8" stroke="none" stroke-width="1.4"/>
+<text x="786" y="347" text-anchor="middle" font-size="14" font-weight="400" fill="#476068">Adjust and validate again</text>
+<text x="47" y="397" text-anchor="start" font-size="23" font-weight="700" fill="#203b46">Product operation and evolution</text>
+<rect x="1117" y="423" width="193" height="91" rx="9" fill="#e9f5f0" stroke="#7fb0a6" stroke-width="1.4"/>
+<text x="1213.5" y="452" text-anchor="middle" font-size="15.5" font-weight="700" fill="#155d59">Operate the service</text>
+<text x="1213.5" y="476" text-anchor="middle" font-size="14" font-weight="400" fill="#155d59">Monitoring, support</text>
+<text x="1213.5" y="495" text-anchor="middle" font-size="14" font-weight="400" fill="#155d59">and everyday use</text>
+<path d="M 1213 315 V 421" fill="none" stroke="#11665f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<rect x="827" y="423" width="208" height="91" rx="9" fill="#fff2e9" stroke="#d4a089" stroke-width="1.4"/>
+<text x="931.0" y="452" text-anchor="middle" font-size="16" font-weight="700" fill="#843f23">Handle the incident</text>
+<text x="931.0" y="476" text-anchor="middle" font-size="14" font-weight="400" fill="#843f23">Assess the impact</text>
+<text x="931.0" y="495" text-anchor="middle" font-size="14" font-weight="400" fill="#843f23">and coordinate response</text>
+<rect x="530" y="423" width="216" height="91" rx="9" fill="#fff2e9" stroke="#d4a089" stroke-width="1.4"/>
+<text x="638.0" y="452" text-anchor="middle" font-size="16" font-weight="700" fill="#843f23">Restore the service</text>
+<text x="638.0" y="476" text-anchor="middle" font-size="14" font-weight="400" fill="#843f23">Mitigate or roll back</text>
+<text x="638.0" y="495" text-anchor="middle" font-size="14" font-weight="400" fill="#843f23">and confirm recovery</text>
+<path d="M 1117 467 H 1037" fill="none" stroke="#9c4c2d" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#rust)"/>
+<text x="1076" y="454" text-anchor="middle" font-size="14" font-weight="400" fill="#843f23">failure</text>
+<path d="M 827 467 H 748" fill="none" stroke="#9c4c2d" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#rust)"/>
+<rect x="506" y="583" width="265" height="88" rx="9" fill="#fff2e9" stroke="#d4a089" stroke-width="1.4"/>
+<text x="638.5" y="612" text-anchor="middle" font-size="16" font-weight="700" fill="#843f23">Prepare a fix</text>
+<text x="638.5" y="636" text-anchor="middle" font-size="14" font-weight="400" fill="#843f23">Investigate the cause and</text>
+<text x="638.5" y="655" text-anchor="middle" font-size="14" font-weight="400" fill="#843f23">define a permanent change</text>
+<path d="M 638 514 V 581" fill="none" stroke="#9c4c2d" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 5" marker-end="url(#rust)"/>
+<text x="650" y="551" text-anchor="start" font-size="14" font-weight="400" fill="#843f23">if the cause persists</text>
+<rect x="824" y="583" width="225" height="88" rx="9" fill="#e9f5f0" stroke="#7fb0a6" stroke-width="1.4"/>
+<text x="936.5" y="612" text-anchor="middle" font-size="16" font-weight="700" fill="#155d59">Spot an improvement</text>
+<text x="936.5" y="636" text-anchor="middle" font-size="14" font-weight="400" fill="#155d59">A new need arises</text>
+<text x="936.5" y="655" text-anchor="middle" font-size="14" font-weight="400" fill="#155d59">from real use</text>
+<path d="M 1213 514 V 627 H 1051" fill="none" stroke="#11665f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<rect x="47" y="572" width="262" height="87" rx="9" fill="#e9f5f0" stroke="#7fb0a6" stroke-width="1.4"/>
+<text x="178.0" y="601" text-anchor="middle" font-size="16" font-weight="700" fill="#155d59">Prioritize the change</text>
+<text x="178.0" y="625" text-anchor="middle" font-size="14" font-weight="400" fill="#155d59">Fixes and improvements return</text>
+<text x="178.0" y="644" text-anchor="middle" font-size="14" font-weight="400" fill="#155d59">to the work portfolio</text>
+<path d="M 506 620 H 311" fill="none" stroke="#11665f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<path d="M 936 671 V 699 H 178 V 661" fill="none" stroke="#11665f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<path d="M 92 572 V 424 H 24 V 337 H 114 V 317" fill="none" stroke="#11665f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<rect x="47" y="737" width="1266" height="51" rx="9" fill="#e8eeec" stroke="none" stroke-width="1.4"/>
+<text x="64" y="768" text-anchor="start" font-size="17" font-weight="700" fill="#203b46">Shared capabilities</text>
+<text x="338" y="768" text-anchor="start" font-size="15" font-weight="400" fill="#203b46">Teams and domain knowledge   ·   Architecture and components   ·   Environments, testing and deployment</text>
+</g></svg>

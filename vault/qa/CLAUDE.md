@@ -17,7 +17,7 @@ From `../templates/finding.md`. A finding must be **self-contained and actionabl
 - **Actual, expected, change.** What happens, what should happen, and what must change. Without the third part it is a complaint, not a finding.
 - **Reproduction.** Exact steps, commit, and harness and model where relevant.
 - **Evidence.** Output, screenshot, trace or `file:line`, linked from the note and stored next to it if it is a file.
-- **Area.** One of `checks`, `verify`, `skills`, `rules`, `agents`, `workflows`, `evals`, `vault`, `docs`.
+- **Area.** One of `core`, `vault`, `evidence`, `docs`. (Finer areas come with the core structure.)
 
 `status: open | triaged | fixing | fixed | verified | wont-fix`. `fixed` means the change is merged; `verified` means it was re-tested where it failed. Only `verified` or `wont-fix` (with a reason) closes a finding.
 
@@ -35,7 +35,7 @@ Then propose how to encode it, at the **lowest layer of the trust pyramid** that
 | 2. Check | A deterministic lint rule, type, boundary or test, whose error message explains how to fix the root cause | A lint rule that blocks timers used as quick fixes |
 | 3. Verification | A runtime, property-based or formal verification that catches it | A feature map driven run that proves the sidebar still works |
 | 4. Skill | A reusable procedure with its own CLI | A skill that always runs the app before claiming a UI change works |
-| 5. Rule | A line in a `CLAUDE.md` or in `core/rules/` | Only when the mistake needs judgment and no check can express it |
+| 5. Rule | A line in a `CLAUDE.md` or another instruction file | Only when the mistake needs judgment and no check can express it |
 
 `status: logged | encoded | dismissed`.
 

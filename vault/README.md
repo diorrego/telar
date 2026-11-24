@@ -6,6 +6,7 @@ The workshop notebook for building Telar: why it exists, what was decided, what 
 |---|---|
 | `foundations/` | Vision, principles, research synthesis, glossary. The product definition. |
 | `decisions/` | Architecture decision records, numbered. |
+| `evidence/` | The research Telar comes from: conversations, documents, prototype and figures, translated and ordered by date. |
 | `projects/` | Initiatives. Each iteration in its own `vN/` with `DIAGNOSIS.md`, `PLAN.md` and `CLOSEOUT.md`. |
 | `qa/` | `findings/` (defects), `corrections/` (agent pushbacks to encode), `sessions/` (exploratory QA). |
 | `templates/` | One template per note type. |

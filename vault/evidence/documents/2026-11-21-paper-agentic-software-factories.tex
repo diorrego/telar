@@ -1,0 +1,255 @@
+% Evidence. Translated from Spanish on 2026-11-24. Original: paper.tex in the research workspace (2026-11-21). This is the first, exploratory paper; Diego judged it "an advance, but poor" and asked to define the factory model first (see ../conversations/2026-11-21-agentic-software-factories.md).
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern,microtype}
+\usepackage[margin=24mm,top=22mm,bottom=24mm]{geometry}
+\usepackage{booktabs,tabularx,array,ragged2e,amsmath}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage{caption,fancyhdr}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{hyperref}
+\definecolor{ink}{HTML}{17384A}
+\definecolor{teal}{HTML}{126765}
+\definecolor{pale}{HTML}{E9F4F1}
+\hypersetup{colorlinks=true,linkcolor=teal,citecolor=teal,urlcolor=teal,pdftitle={Agentic software factories: operating models, technologies and evidence},pdfsubject={Integrative review of software engineering}}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small\sffamily Agentic software factories}
+\fancyhead[R]{\small\sffamily Integrative review}\fancyfoot[C]{\small\thepage}
+\setlength{\headheight}{14pt}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcommand{\hd}[1]{\textcolor{ink}{\bfseries #1}}
+\newcommand{\paperlink}[1]{\href{https://www.alphaxiv.org/pdf/#1}{Full text}}
+\setlength{\bibsep}{3.5pt}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\tikzset{box/.style={draw=ink!65,rounded corners=2pt,fill=black!2,align=center,font=\small\sffamily,inner sep=5pt,minimum height=10mm},active/.style={box,draw=teal,fill=pale},flow/.style={-{Stealth[length=2mm]},draw=ink,thick},back/.style={flow,dashed,draw=teal},tag/.style={font=\footnotesize\sffamily,fill=white,inner sep=2pt,align=center}}
+\begin{document}
+\thispagestyle{plain}
+{\small\sffamily\color{teal} SOFTWARE ENGINEERING \hfill INTEGRATIVE REVIEW}\par
+\vspace{4mm}
+{\LARGE\bfseries\color{ink} Agentic software factories\par}
+\vspace{2mm}
+{\Large Operating models, implementation technologies and delivery evidence\par}
+\vspace{3mm}
+{\small November 21, 2026}\par
+\begin{abstract}
+What work must a system take on for it to make sense to call it an \emph{agentic software factory}? This integrative review compares systems that develop from requirements, teams that resolve issues, and factories that maintain repositories in operation. The analysis identifies four coordination models according to the decision that links one unit of work to the next: a procedure between roles, planning by increments, a persistent board, and search guided by an operational signal. Human approval and accountability cut across all four models. The technologies observed in the studies are distinguished from the components that could be used to build a factory. The evidence spans controlled experiments with people, reproducible repository tests and industrial studies with different periods and denominators. The main gap is estimating the total human effort and the post-delivery quality under a common acceptance criterion. A comparative protocol is proposed, and the evidence matrices and two architecture diagrams are gathered at the end.
+\end{abstract}
+\noindent\small\textbf{Keywords.} Agent-based software engineering, multi-agent systems, orchestration, continuous delivery, human oversight.\normalsize
+
+\section{The unit of analysis}
+A developer asks an agent to fix a calculation. The agent modifies three files and runs the tests. If the developer must interpret the failure, formulate the next work item, request a review and decide when to integrate, the unit that organizes the process is still the person. Now consider the same agent invoked by a system that receives the issue, stores the acceptance criterion, returns the failures to the person responsible and presents the change to the approver. The language model may be identical. What changed is who coordinates the step from one decision to the next.
+
+The software factory tradition already linked the organization of work with reuse and quality control. Cusumano studied that relationship in American and Japanese development installations \citep{cusumano}. In the recent literature, Hua places a technical boundary at the state that passes from one run to another \citep{hua}. Hassan and colleagues place an organizational boundary at the authority to let a change advance and at who answers for it \citep{hassan}. A factory can preserve state and, even so, lack a satisfactory definition of ``accepted''. Both boundaries matter.
+
+We adopt an operational definition: an \textbf{agentic software factory} receives development or maintenance objectives, assigns decisions among people, agents and executable rules, repeatably coordinates at least two stages, and preserves the state and evidence needed to accept, return or escalate a delivery. ``Delivery'' is qualified in each study: executable artifact, approved patch, integrated change or version in use. We call the distribution of these decisions the \emph{operating model}, the components that carry them out the \emph{architecture}, and their concrete implementation the \emph{technology}. The language model occupies a position within the architecture.
+
+\section{Method and scope}
+Three questions were posed. What mechanisms transfer control between stages? What technologies carry out those mechanisms, and which ones can be substituted? What does the evaluation of each system allow one to claim about delivery? The unit of extraction was the path of an objective up to the last output actually observed. When the authors describe a broader vision than their evaluation, we coded both separately.
+
+The search, closed on November 21, 2026, combined semantic and keyword discovery in alphaXiv, academic search in OpenAlex and reading of primary sources. The expansion started from the exploratory corpus and incorporated the query families \textit{agentic software factory}, \textit{software factory}, \textit{multi-agent software development} and iterative development with agents. In OpenAlex, \textit{multi-agent software development process organization waterfall agile software agents scrum} and \textit{The software factory a historical interpretation Cusumano} were also queried. The cases were contrasted with original studies of human productivity and with the SWE-bench task definition. For the technologies, the documentation from their maintainers was consulted. A technical data sheet supports documented capabilities, not productivity estimates.
+
+Works with an identifiable coordination mechanism and an inspectable output were included. Studies that isolate the effort of one person or the quality of one stage were kept as comparators. Articles on general agile management and factories whose product is a dataset were left out of the core. A publication and its preprint were treated as the same work. The analytical corpus comprises nine works on systems and operating models (table~\ref{tab:estudios}), four studies on limits and comparators (table~\ref{tab:comparadores}) and one historical antecedent. The technical documentation is cited separately.
+
+The extraction recorded input, advancement decision, persistence, person responsible for acceptance, type of evaluation and inference limit. The classification is interpretive and was carried out in a single review, without independent screening or an exhaustive record of exclusions. The results serve to compare documented mechanisms. We do not estimate their prevalence in industry, nor do we combine effect sizes from heterogeneous tasks.
+
+\section{Four operating models}
+Table~\ref{tab:modelos} condenses the classification. The models are distinguished by the decision that moves the work forward, and they can coexist in the same organization.
+\subsection{Procedure between roles}
+In ChatDev, a chain of dialogues distributes design, programming and testing. The artifact that the next role receives depends on how the previous dialogue is formulated and closed \citep{chatdev}. MetaGPT formalizes the handoff through operating procedures and structured outputs, such as specifications and design documents \citep{metagpt}. The difference has concrete consequences. An interface omitted from a specification can be looked up in a versioned document, whereas reconstructing the same agreement from a conversation requires distinguishing agreements from discarded proposals. Traceability is a potential advantage of the design. Confirming it would require measuring whether a third party manages to locate and fix the error.
+
+This family fits work items whose work structure is relatively stable. The weak point appears when a stage consumes a mistaken assumption and produces an internally coherent result. Running the program verifies a functional property. Correspondence with the user's intention requires acceptance examples or a product review by someone who knows that intention.
+
+\subsection{Team coordinated by increments}
+AgileCoder keeps a backlog, develops in iterations and updates a code dependency graph to select context when files change \citep{agile}. TheBotCompany delegates the composition of the team to a manager and organizes each milestone into strategy, execution and verification, with asynchronous human oversight \citep{bot}. Agyn makes it possible to observe the mechanism at the scale of a single issue: it separates research, implementation and review, opens a pull request and requires approval from the reviewer agent \citep{agyn}. In all three cases, the next step depends on the state of the increment. What changes is the horizon and the coordinator's degree of discretion.
+
+Harness-of-Harness organizes runs of existing agents into planning, programming and testing loops. It preserves the project history and distinguishes development tests from independent evaluation \citep{hoh}. This variant illustrates why counting personas or concurrent processes misclassifies some systems. Continuity can also reside in a coordinator that reuses the same executor. The empirical question is whether each iteration contributes a verifiable capability or consumes more compute to repair the previous increment.
+
+\subsection{Distributed maintenance through a board}
+Jiang and Lysenko describe periodic agents with standing objectives that discover work and coordinate it through shared records. An issue, a comment or a pull request can trigger subsequent work. The repository and the board preserve information across sessions \citep{instant}. The model differs from the milestone-based team because part of the demand is generated within the factory itself. It is of interest when many small tasks come in and no initial plan exhausts the work.
+
+The autonomy to create issues also changes the productivity denominator. Splitting one repair into five issues can increase the number of closures without changing the service delivered. In the case of the command-line tool, the authors identified incorrect fixes in at least 25 of 450 issues marked as resolved. None of those 25 had been reopened \citep[observation O4]{instant}. A metric based exclusively on reopenings would have missed all of those cases.
+
+\subsection{Evolution guided by an operational signal}
+In the factory for data systems by Pavlenko and colleagues, telemetry helps select optimization targets. A search process proposes and evaluates modifications against a measurable signal, and the resulting proposals go to engineering review \citep{data}. The distinctive requirement is having a measure with which to decide which variant survives. A latency reduction only expresses the right objective if, for example, the query semantics and the admissible resource consumption are preserved.
+
+This model can coexist with the previous ones. A service can detect a regression from telemetry, record it on a board and assign it to a team working by increments. To classify a hybrid case, we propose annotating separately who generates the demand, what mechanism selects the next action and who has acceptance authority. Hassan et al. describe a deterministic engine that requires evidence before transitions and routes consequential decisions to people \citep{hassan}. Governance is thus a cross-cutting dimension: a distributed factory can also have centralized approval rules.
+
+\section{Technologies and implementation decisions}
+Table~\ref{tab:tech} distinguishes realizations documented in studies from candidate components backed by technical documentation. Figure~\ref{fig:capas} organizes them according to the responsibility they fulfill. A buy or build decision is only interpretable after establishing which artifact must survive an interruption and who can authorize the next action.
+
+\paragraph{Language model and agent environment.}
+In Agyn, the authors assigned GPT-5 to coordination and research and GPT-5-Codex to implementation and review \citep[section 4.1]{agyn}. Harness-of-Harness, by contrast, studied three combinations of model and executor \citep[section 4.1]{hoh}. Both are experimental configurations. To build an interchangeable executor, OpenHands offers Python and REST interfaces, editing and execution tools, and workspaces \citep{openhands}. The useful contract for the factory is the task output: base revision, proposed changes, tests run and stop reason. That contract allows the executor to be changed while keeping the acceptance process.
+
+\paragraph{Orchestration and memory.}
+LangGraph stores the state of a thread in checkpoints and allows data to be shared across threads through stores \citep{langgraph}. Temporal defines durable workflows and separates their deterministic logic from the activities that interact with external services \citep{temporal}. A graph is natural if the problem is deciding which role acts upon receiving evidence. A durable engine becomes interesting if a task must wait hours for an authorization and resume after a failure. They can be combined when their scopes are explicit. If two layers independently retry the publication of the same change, duplication is possible. One proposed solution is to bind the operation to a stable delivery identifier and check the recorded result before repeating it.
+
+\paragraph{Integration, execution and context.}
+The MCP protocol standardizes context exchange and tool invocation between clients and servers \citep{mcp}. The integrator decides which actions to expose to each role and with which permissions. To run the tests, Docker allows CPU and memory limits to be set on the container \citep{docker}. It is useful to distinguish three states: the conversational memory that helps the agent reason, the reproducible version of the repository, and the dossier that justifies acceptance. Restoring the first without identifying the other two can resume work on an outdated revision.
+
+\paragraph{Verification, publication and observability.}
+GitHub Actions allows a deployment to be conditioned on environment rules, reviewers or branch restrictions. The availability of some controls depends on the plan and on the visibility of the repository \citep{actions}. OpenTelemetry relates distributed operations through traces and spans with timestamps \citep{otel}. A trace indicates what happened. To decide whether a change was correct, it must be linked to the requirement identifier, the revision that was tested and the criterion applied. This separation has a practical effect: the agent that proposes modifying the tests can do so on a branch, while an external rule decides whether that change of criterion requires a second approval.
+
+\paragraph{Two plausible compositions.}
+For maintaining a library with periodic deliveries, an issue queue, a code executor and protected tests can implement the board model. The shared state is the issue linked to the revision. The maintainer can keep the publication decision. To optimize a data service, the same queue also needs a representative workload, a performance meter, a comparison with the base version and a rollback rule. Adding reviewer agents would not by itself produce the missing signal. Both compositions are design examples derived from the synthesis. Their performance would require its own evaluation.
+
+\section{What the evidence shows}
+\paragraph{Individual productivity depends on the task.}
+Peng et al. compared developers with and without access to Copilot when implementing an HTTP server in JavaScript. They reported 55.8\,\% faster completion with assistance \citep{peng}. In another trial, Becker et al. randomly assigned access to AI tools for 246 tasks contributed by 16 experienced developers in their own repositories. Time was 19\,\% longer when AI use was allowed \citep{metr}. Familiarity with the repository, the tools, the tasks and the indicator differ. Therefore both results inform the selection of comparators, without constituting an estimate of the effect of a factory.
+
+\paragraph{An evaluated patch has a precise scope.}
+SWE-bench starts from an issue and a repository and evaluates the patch with tests \citep{swebench}. Agyn reports a 72.2\,\% resolution rate on 500 tasks in its configuration. The protocol allowed some interrupted runs to continue from artifacts preserved on GitHub \citep[sections 4 and 5]{agyn}. The result informs about issue resolution under those conditions. It leaves open the selection of priorities and the survival of the change in production. At another stage, CRBugBench evaluates whether the reviewer identifies a known bug. Its best configuration placed the finding among the first five comments in 71.9\,\% of the cases in the reported public evaluation \citep{review}. Resolving an issue and detecting a defect in review have different denominators, even though both results are expressed as percentages.
+
+\paragraph{The industrial denominator changes the conclusion.}
+Pavlenko et al. estimate 0.35 pull requests per engineering hour devoted to application scenarios with Autoperf. The team estimates that these scenarios accounted for 43\,\% of the time and that the remaining 57\,\% went to infrastructure and repository onboarding \citep{data}. The figure serves to describe the operation once part of the infrastructure is available. Budgeting a new factory also requires including that second component. In \emph{Instant Software Factories}, manually configured installations were observed for 15 and 17 days. The proposed procedure for starting up new factories with a single round of instructions remained unevaluated in that work \citep{instant}. An observation about maintenance and a hypothesis about startup require different tests.
+
+\paragraph{Horizon and generalization.}
+TheBotCompany studies four long-running projects, in addition to five ProjDevBench problems. The authors make explicit that there is one run per project and that systems software with defined correctness criteria predominates \citep[sections 4.2 and 4.4]{bot}. Harness-of-Harness compares executors with and without its coordinating layer and presents a multi-day project \citep{hoh}. These designs make it possible to observe state accumulation and recovery across iterations. Usefulness over months, the burden on a team that inherits the product and suitability for ambiguous requirements remain open questions for this corpus.
+
+\section{Proposed protocol for comparing a factory}
+An evaluation that answers the initial question must observe the same work across three conditions: a person with an assistant, an agent that receives the complete task, and the factory with persistent coordination. We propose assigning the work items in blocks by repository, difficulty and type of demand, keeping the same starting revision, and using an independent evaluator with criteria set before execution. In the comparison between agent and factory, the base model can be held constant and a common budget set. If the design allows more compute, the additional cost should be reported as part of the intervention.
+
+Let $N$ be the number of assigned work items and $A$ the number of deliveries accepted independently within the preset deadline. For each work item $i$, let $h_i$ be the sum of human minutes of specification, intervention, review and rework, including subsequent follow-up during a common window. Let $H_0$ be the infrastructure preparation time attributed to the cohort. We propose reporting jointly
+\[
+   P_{\text{acceptance}}=\frac{A}{N},
+   \qquad
+   H_{\mathrm{per\ delivery}}=\frac{H_0+\sum_{i=1}^{N}h_i}{A}.
+\]
+The second ratio is undefined if $A=0$ and must be reported together with the total effort lost. Including failed attempts in the numerator avoids rewarding a system that only completes the easy work items. Also record the compute cost per delivery, the latency from the objective, the reverted changes and the defects discovered during the same window. Separating setup cost from recurring cost makes it possible to recalculate the result for other volumes.
+
+Two falsifiable predictions follow from the synthesis. First, when a task requires resuming work after a clarification, persistent coordination should reduce the effort of reconstructing context. This can be tested by removing the resumption mechanism while keeping resources and tasks. Second, if the system also generates its own demand, the volume of closures should be more sensitive to the decomposition policy than the number of requirements accepted by a third party. This can be checked by changing that policy under a fixed set of external objectives. Both are hypotheses of this review.
+
+\section{Discussion and conclusions}
+The most informative criterion for recognizing a factory is to ask what happens after a failure. If the system keeps the objective, assigns the fix, reruns the check and delivers evidence to whoever has authority, there is delegated coordination even if publication requires a human signature. If that path is only completed when a person reconstructs the context and formulates each work item, the automation is concentrated in the local task. Figure~\ref{fig:flujo} turns that boundary into an inspectable path.
+
+The selection favors works accessible in English and systems described by their creators. Preprints make it possible to observe recent architectures, but their results may change with the version. Product documentation attests to the interfaces available on the date consulted. An additional threat is the asymmetry of visibility: it is easier to observe the repository tests than the time of a maintainer who fixes the result weeks later. These limitations prevent ranking the families by a single measure of effectiveness.
+
+To choose a model, it is best to start with the nature of the demand. A stable specification lends itself to a procedure by roles. Requirements that are clarified through partial deliveries favor evaluating a model by increments. Recurring maintenance requires studying how the queue is created and prioritized. Operation-guided optimization demands a signal that reflects the real objective and a mechanism to detect regressions. In all cases, the technology choice must express who decides, what persists and what test allows acceptance. The decisive comparison lies in the total cost per accepted delivery and in its subsequent behavior.
+\begin{thebibliography}{30}\small
+\bibitem[Cusumano(1987)]{cusumano} M. A. Cusumano (1987). The ``Software Factory'' Reconsidered: An Approach to the Strategic Management of Engineering. MIT, working paper. \href{https://hdl.handle.net/1721.1/11025}{Primary source}.
+\bibitem[Hua(2026)]{hua} L. Hua (2026). Beyond the Agent Harness: Boundary Criteria for Software-Factory Orchestration. A Single-Operator Case Study. arXiv:2611.06946. \paperlink{2611.06946}.
+\bibitem[Hassan et al.(2026)]{hassan} A. E. Hassan et al. (2026). The Software Engineering Factory: Engineering Accountability and Control in the Age of Abundant Code. arXiv:2611.21623. \paperlink{2611.21623}.
+\bibitem[Qian et al.(2024)]{chatdev} C. Qian et al. (2024). ChatDev: Communicative Agents for Software Development. ACL. \href{https://aclanthology.org/2024.acl-long.810/}{Primary source}.
+\bibitem[Hong et al.(2024)]{metagpt} S. Hong et al. (2024). MetaGPT: Meta Programming for a Multi-Agent Collaborative Framework. ICLR. arXiv:2308.00352. \paperlink{2308.00352}.
+\bibitem[Nguyen et al.(2024)]{agile} M. H. Nguyen, T. C. Phan, P. X. Nguyen and N. D. Q. Bui (2024). AgileCoder: Dynamic Collaborative Agents for Software Development based on Agile Methodology. arXiv:2406.11912. \paperlink{2406.11912}.
+\bibitem[Lyu et al.(2026)]{bot} W. Lyu, Y. Xiao, Y. Zhang and Y. Sun (2026). TheBotCompany: Self-Organizing Multi-agent Systems for Continuous Software Development. ASE. DOI 10.1145/3832783.3834358. arXiv:2603.25928. \paperlink{2603.25928}.
+\bibitem[Benkovich and Valkov(2026)]{agyn} N. Benkovich and V. Valkov (2026). Agyn: A Multi-Agent System for Team-Based Autonomous Software Engineering. arXiv:2602.01465. \paperlink{2602.01465}.
+\bibitem[Yan et al.(2026)]{hoh} H. Yan et al. (2026). Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement. arXiv:2609.01481. \paperlink{2609.01481}.
+\bibitem[Jiang and Lysenko(2026)]{instant} W. Jiang and M. Lysenko (2026). Instant Software Factories. arXiv:2610.36254. \paperlink{2610.36254}.
+\bibitem[Pavlenko et al.(2026)]{data} A. Pavlenko et al. (2026). Towards an AI Software Factory for Data Systems. arXiv:2609.36323. \paperlink{2609.36323}.
+\bibitem[Peng et al.(2023)]{peng} S. Peng, E. Kalliamvakou, P. Cihon and M. Demirer (2023). The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. \paperlink{2302.06590}.
+\bibitem[Becker et al.(2025)]{metr} J. Becker, N. Rush, B. Barnes and D. Rein (2025). Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. METR. \href{https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/}{Primary source}.
+\bibitem[Yang et al.(2026)]{review} C. Yang et al. (2026). (When) Should a Software Factory be Lights-off? Benchmarking Code Review Agents on Bug Detection. arXiv:2610.13668. \paperlink{2610.13668}.
+\bibitem[SWE-bench(2026)]{swebench} SWE-bench. Overview. Project documentation. \href{https://www.swebench.com/SWE-bench/}{Primary source}.
+\bibitem[OpenHands(2026)]{openhands} OpenHands. Software Agent SDK. Agent, tool and workspace interfaces. \href{https://docs.openhands.dev/sdk}{Primary source}.
+\bibitem[LangChain(2026)]{langgraph} LangChain. LangGraph: Persistence. Checkpoints and state stores. \href{https://docs.langchain.com/oss/python/langgraph/persistence}{Primary source}.
+\bibitem[Temporal(2026)]{temporal} Temporal Technologies. Workflow Definition and \href{https://docs.temporal.io/activities}{Activities}. \href{https://docs.temporal.io/workflow-definition}{Primary source}.
+\bibitem[MCP(2026)]{mcp} Model Context Protocol. Architecture overview. Version of July 28, 2026. \href{https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture}{Primary source}.
+\bibitem[Docker(2026)]{docker} Docker. Resource constraints. Container execution limits. \href{https://docs.docker.com/engine/containers/resource_constraints/}{Primary source}.
+\bibitem[GitHub(2026)]{actions} GitHub. Deployments and environments. Environment protection rules. \href{https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments}{Primary source}.
+\bibitem[OpenTelemetry(2026)]{otel} OpenTelemetry. Traces. Trace model and context propagation. \href{https://opentelemetry.io/docs/concepts/signals/traces/}{Primary source}.
+\end{thebibliography}
+\clearpage
+\appendix
+\section{Synthesis matrices}\label{sec:matrices}
+\begin{table}[!ht]
+\caption{\textbf{Nine works on factory operation.} The output column distinguishes the observed artifact from the authority that receives it. The groupings reflect the reading of this review.}\label{tab:estudios}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.23}
+\begin{tabularx}{\linewidth}{@{}L{2.7cm}YYY@{}}
+\toprule
+\hd{System} & \hd{Input and coordination} & \hd{Documented output or decision} & \hd{Scope of the evidence} \\\midrule
+ChatDev \citep{chatdev} & Initial requirement. Chained dialogues between roles. & Software and documentation. Execution and adequacy are evaluated. & Application generation and ablations. Post-delivery follow-up pending.\\
+MetaGPT \citep{metagpt} & Requirement. Procedures and structured messages. & Intermediate documents and code for the next role. & Comparison on development tasks. Organizational integration open.\\
+AgileCoder \citep{agile} & Specification. Backlog, iterations and code graph. & Increment reviewed and tested at the close of each cycle. & HumanEval, MBPP and ProjectDev cover units of different scale.\\
+Agyn \citep{agyn} & Issue. Manager, researcher, engineer and reviewer. & Pull request approved by the reviewer agent. & SWE-bench 500. Adoption of the patch by a maintainer remains open.\\
+TheBotCompany \citep{bot} & Objective. The manager adapts the team to each milestone. & Milestone verification with asynchronous human oversight. & Five benchmark problems and four long-running projects. One run per project.\\
+Harness-of-Harness \citep{hoh} & Broad requirement. Loops over existing executors. & Versioned increments, development tests and separate evaluation. & Three benchmarks and one multi-day case. Later horizon open.\\
+Instant Software Factories \citep{instant} & Tested repository. Periodic agents discover work on a board. & Issues and integrated changes with governance controls. & Two manual installations, 15 and 17 days. Automatic startup proposed.\\
+AI Software Factory for Data Systems \citep{data} & Performance signal. Target selection and variant evaluation. & Autoperf sends proposals to a human review queue. & Industrial applications in data systems with an optimization metric.\\
+Software Engineering Factory \citep{hassan} & Work protocols and delegated authority. & An engine enforces the conditions for advancement and escalation. & Principles derived from three implementations. Synthesis of experience.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[!ht]
+\caption{\textbf{What distinguishes the four models.} The question in the last column guides the choice of model when the type of demand changes.}\label{tab:modelos}
+\small\renewcommand{\arraystretch}{1.20}\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}L{2.7cm}YYY@{}}
+\toprule\hd{Model} & \hd{Who decides advancement} & \hd{State that persists} & \hd{Decisive question}\\\midrule
+By procedure & Sequence of roles and handoff rules. & Requirement and artifacts of each stage. & Is the interface between stages defined?\\
+By increments & Coordinator that decides the next milestone or review. & Backlog, version and result of the last cycle. & Can each increment be accepted separately?\\
+By board & Agents with standing objectives that take work from a queue. & Issues linked to changes and reviews. & Who detects duplicate or low-value work?\\
+By operational signal & Selector that compares candidates under a metric. & Baseline, variants and reproducible results. & Does the metric reflect value without hiding regressions?\\
+\bottomrule\end{tabularx}
+\end{table}
+
+\clearpage
+\begin{table}[!ht]
+\caption{\textbf{Four works that delimit the object.} Two study individual productivity, one evaluates a specific control and another proposes criteria for locating coordination.}\label{tab:comparadores}
+\small\renewcommand{\arraystretch}{1.21}
+\begin{tabularx}{\linewidth}{@{}L{2.7cm}YY@{}}
+\toprule\hd{Work} & \hd{Observed unit} & \hd{Use in the review}\\\midrule
+Peng et al. \citep{peng} & Person who implements an HTTP server with or without Copilot. & Comparator for an already specified task.\\
+Becker et al. \citep{metr} & Maintainer in their own repository, with AI access assigned per task. & Comparator that incorporates familiarity and local standards.\\
+Yang et al. \citep{review} & Pull request with a known defect and the reviewer's comments. & Measures bug detection at one stage.\\
+Hua \citep{hua} & Mechanism within a run or across runs. Single-operator case. & Boundary criterion. Agreement between coders requires human validation.\\
+\bottomrule\end{tabularx}
+\end{table}
+\begin{table}[!ht]
+\caption{\textbf{From a responsibility to a technology.} ``Observed'' designates a realization described by the cited study. ``Candidate'' designates a documented option that this review links to the responsibility.}\label{tab:tech}
+\small\renewcommand{\arraystretch}{1.19}\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}L{2.5cm}YYY@{}}
+\toprule\hd{Function} & \hd{Realization or candidate} & \hd{What it records} & \hd{Integration decision}\\\midrule
+Inference and action & Observed: per-role models in Agyn. Candidate: OpenHands SDK \citep{agyn,openhands}. & Proposed change and actions on the workspace. & Fix the model and budget to compare executors.\\
+Handoff between roles & Observed: MetaGPT procedures. Candidate: graph with LangGraph persistence \citep{metagpt,langgraph}. & Thread state and intermediate artifact. & Define which data survive between tasks.\\
+Resumption & Candidate: Temporal workflows and activities \citep{temporal}. & Workflow history and activity results. & Ensure that a retry does not duplicate the delivery.\\
+Shared board & Observed: issues and pull requests on GitHub \citep{instant,agyn}. & Links between task, review and change. & Resolve simultaneous assignments and duplicates.\\
+Tool access & Candidate: MCP client and servers \citep{mcp}. & Request and result, if instrumented. & Define permissions and credentials per role.\\
+Test execution & Candidate: Docker environments with limits \citep{docker,swebench}. & Result on an identified version. & Fix dependencies, resources and test data.\\
+Publication & Candidate: GitHub Actions protected environments \citep{actions}. & Deployment approval decision. & Designate an owner and a rollback policy.\\
+Observability & Candidate: OpenTelemetry traces \citep{otel}. & Timings and relationships between operations. & Associate traces with version, objective and acceptance.\\
+\bottomrule\end{tabularx}
+\end{table}
+
+\clearpage
+\section{Reference diagrams}
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[node distance=11mm and 7mm]
+\node[box,text width=25mm] (goal) {Objective and\\criteria};
+\node[active,right=of goal,text width=26mm] (route) {Coordinate and\\assign};
+\node[box,right=of route,text width=24mm] (do) {Propose a\\change};
+\node[box,right=of do,text width=26mm] (check) {Verify the\\revision};
+\node[box,below=17mm of check,text width=26mm] (release) {Authorize\\the delivery};
+\node[box,below=17mm of route,text width=26mm] (human) {Responsible\\human};
+\draw[flow] (goal)--(route);\draw[flow] (route)--(do);\draw[flow] (do)--(check);
+\draw[flow] (check)--node[tag,right]{passes}(release);
+\draw[back] (check.north) -- ++(0,6mm) -| node[tag,pos=.28,above]{failure with evidence} (route.north);
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]},dashed,draw=teal,thick] (route)--node[tag,right]{clarification}(human);
+\draw[flow] (human)--node[tag,above]{approval if applicable}(release);
+\end{tikzpicture}
+\caption{\textbf{Who decides after a failure.} Coordination returns a failed revision with evidence and can escalate an ambiguity. The delivery dossier preserves the accepted version and the person responsible. Synthesis proposed from \citep{hua,hassan,agyn}.}\label{fig:flujo}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[node distance=6mm and 9mm]
+\node[active,text width=41mm] (control) {Coordination and\\authorization policy};
+\node[box,left=of control,text width=29mm] (work) {Objectives, board\\and priorities};
+\node[box,right=of control,text width=29mm] (state) {Persistent state\\and history};
+\node[box,below=11mm of control,text width=41mm] (run) {Task executor\\model and tools};
+\node[box,below=of run,text width=41mm] (repo) {Repository and build\\and test environment};
+\node[box,right=of repo,text width=29mm] (artifact) {Evidence per\\revision};
+\draw[flow] (work)--(control);
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]},thick,draw=ink] (control)--(state);
+\draw[flow] (control)--(run);\draw[flow] (run)--(repo);
+\draw[flow] (repo)--(artifact);
+\draw[back] (artifact)--node[tag,right]{result}(state);
+\end{tikzpicture}
+\caption{\textbf{Where the factory resides.} The executor can be replaced while keeping the task contract. The policy uses the persistent state and the results of a specific revision to decide advancement. Proposed reference architecture, with alternatives in table~\ref{tab:tech}.}\label{fig:capas}
+\end{figure}
+\end{document}

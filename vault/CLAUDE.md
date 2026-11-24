@@ -10,6 +10,7 @@ The vault is **documentation, not code**. It holds the thinking behind Telar; th
 |---|---|---|
 | `foundations/` | `vision.md`, `principles.md`, `research.md`, `glossary.md`. The product definition | this file, "Foundations" |
 | `decisions/` | ADRs named `NNNN-kebab-title.md`, indexed in `decisions/README.md` | this file, "Decisions" |
+| `evidence/` | The research conversations, documents, prototype and figures, translated, ordered by date, indexed in `evidence/README.md` | this file, "Evidence" |
 | `projects/` | One folder per initiative, each iteration self-contained in `vN/` | `projects/CLAUDE.md` |
 | `qa/` | `findings/`, `corrections/`, `sessions/` | `qa/CLAUDE.md` |
 | `templates/` | One template per note type. Copy a template to create a note; never edit it in place for a specific note | |
@@ -28,6 +29,14 @@ The vault is **documentation, not code**. It holds the thinking behind Telar; th
 - `status: proposed | accepted | superseded`. An ADR written by an agent is born `proposed`, even when Diego delegated the choice; only Diego accepts it ([C-0001](qa/corrections/C-0001-metaphorical-folder-name.md)).
 - To change an accepted decision, write a new ADR and set `superseded_by` in the old one.
 - Keep the index in `decisions/README.md` in sync, in the same commit.
+
+## Evidence
+
+- `evidence/` is the record of the research Telar comes from ([ADR 0009](decisions/0009-research-evidence-in-the-vault.md)). Read the relevant items before proposing anything; a diagnosis lists what it read (`projects/CLAUDE.md`).
+- Each file starts with its provenance: what it was translated from, when, and where the original is kept.
+- Evidence is faithful: never summarize, reword or "improve" it. The only allowed edits fix a translation error or a missed redaction, and each one is noted in `evidence/README.md`.
+- The repository is public: absolute local paths, private links and woku-internal details (paths, commit hashes, repository names) are redacted as `[redacted: reason]`.
+- New evidence (a new research conversation or document) is added with the same conventions and a row in the index, in the same commit.
 
 ## Frontmatter is the state
 

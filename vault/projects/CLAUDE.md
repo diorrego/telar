@@ -17,7 +17,7 @@ projects/{project}/v2/   new approach: new diagnosis, new scope
 
 | File | What it is |
 |---|---|
-| `DIAGNOSIS.md` | The current state before proposing anything, with an inspection record (date, repository, branch, commit, method). Evidence as `file:line` or URL. From `../templates/diagnosis.md`. |
+| `DIAGNOSIS.md` | The current state before proposing anything, with an inspection record (date, repository, branch, commit, method) and an **evidence inventory**. Evidence as `file:line`, URL, or a path in `vault/evidence/`. From `../templates/diagnosis.md`. |
 | `PLAN.md` | Editable checklist by phases, with frontmatter state and a dated log. Ticked **during** the work, not at the end. The source of truth for progress. From `../templates/plan.md`. |
 | `CLOSEOUT.md` | What was learned, which corrections were encoded, what moves to the next iteration. From `../templates/closeout.md`. |
 | Supporting files | Lowercase names, free form: `evidence.md`, `review.md`, `notes-{topic}.md`, verification artifacts. |
@@ -73,11 +73,12 @@ Keep this table updated when a project is created or an iteration changes state.
 
 | Project | What it is | State |
 |---|---|---|
-| (none yet) | | |
+| [`core-definition`](core-definition/v1/PLAN.md) | Define what the core must contain: the non-negotiables from research to production, each classified as Telar invariant, Telar mechanism with project values, project baseline or project only; woku as the test case | v1 `proposed` 2026-11-24: evidence translated into the vault and diagnosis written (phase 0); waiting for Diego's go |
 
 ## Rules when working here
 
 - Before touching a project, read its latest `vN/PLAN.md`.
+- **A diagnosis starts with an evidence inventory**: every relevant item in `vault/evidence/` (and any other source), each marked read in full, partially, or not read. Proposals about structure or scope cite the evidence they rest on ([C-0002](../qa/corrections/C-0002-shallow-proposal-without-evidence.md)).
 - Diagnoses are written against reality: cite the repository, branch and commit inspected.
 - Plans are living checklists: tick phases when completed and update the log in the same commit.
 - A plan states what is out of scope. Deciding what not to build is part of the plan.
