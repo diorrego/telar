@@ -2,7 +2,7 @@
 
 **Stage 1, workshop. Trust pyramid layer 5: prose rules. The last resort.**
 
-Guidance that requires judgment and cannot be expressed as a check, a verification or a skill. This is what the loom contributes to a target repository's `CLAUDE.md` and `AGENTS.md`.
+Guidance that requires judgment and cannot be expressed as a check, a verification or a skill. This is what the core contributes to a target repository's `CLAUDE.md` and `AGENTS.md`.
 
 ## Belongs here
 

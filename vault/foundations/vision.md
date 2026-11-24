@@ -4,10 +4,6 @@
 
 Telar is an agentic software workshop: the environment, tools and habits with which a small team, starting with one engineer, builds ambitious, high-quality software with coding agents, without losing understanding of what it ships.
 
-## Why a loom
-
-*Telar* is Spanish for loom. On a loom the warp threads are fixed and held under tension, and the shuttle carries the weft across them, fast. The cloth is only as good as the warp. In Telar, checks, verification and rules are the warp; agents carry the weft; the software is the cloth. Speed comes from the shuttle, quality from the warp, and the weaver's attention goes to the pattern.
-
 ## The problem
 
 - Coding agents keep getting better under the same harness. They now run for many minutes per task, and the volume of code they produce keeps growing.
@@ -23,7 +19,7 @@ So Telar builds the workshop first: an environment where agent output is trustwo
 
 ## What Telar is
 
-- **A loom:** the workshop defined as code (checks, verification, skills and rules first; agents, workflows and evals later), versioned, and applied to a target repository.
+- **A core** (`core/`): the workshop defined as code (checks, verification, skills and rules first; agents, workflows and evals later), versioned, and applied to a target repository.
 - **A method:** the corrections ledger, the trust pyramid, review based on evidence, owner summaries, and plans that wait for a human go.
 - **Its own first user:** Telar is built with Telar.
 
@@ -38,10 +34,10 @@ So Telar builds the workshop first: an environment where agent output is trustwo
 
 Proposed in [ADR 0006](../decisions/0006-workshop-before-factory.md). Each stage starts when the previous one meets its exit criteria.
 
-| Stage | Focus | Loom folders | Exit criteria (proposed) |
+| Stage | Focus | Core folders | Exit criteria (proposed) |
 |---|---|---|---|
 | 1. Workshop | The inner loop: one human with interactive agents. Trust layers, corrections ledger, verification artifacts, owner summaries | `checks/`, `verify/`, `skills/`, `rules/` | Corrections per session trend down over a sustained period; a typical change is accepted on verification evidence instead of a line by line read; every recurring correction is encoded |
-| 2. Loop | The outer loop: workflows as code, recorded runs, scores, self-improvement proposals as pull requests to the loom | `agents/`, `workflows/`, `evals/` | An idea runs to a shipped change through the loop with human gates only at spec review and product review; at least one loom improvement proposed from scores is accepted |
+| 2. Loop | The outer loop: workflows as code, recorded runs, scores, self-improvement proposals as pull requests to the core | `agents/`, `workflows/`, `evals/` | An idea runs to a shipped change through the loop with human gates only at spec review and product review; at least one core improvement proposed from scores is accepted |
 | 3. Factory | Scale: unattended runs, benchmarks on own data, model routing, durable and suspendable runs, sandboxes | to be defined | to be defined |
 
 ## How success is measured
@@ -56,11 +52,11 @@ Candidate metrics. The projects that build them define them precisely.
 | Share of changes accepted on evidence | Is review shrinking to artifacts? | Tan, Lloyd |
 | Human interactions per change | How much attention does a change cost? | Lloyd |
 | Cost per change, cycle time | Is it efficient? | Lloyd |
-| Size of `loom/rules/` | Is prose turning into checks? | Telar |
+| Size of `core/rules/` | Is prose turning into checks? | Telar |
 
 ## Open questions
 
-- How the loom is installed in a target repository: copied, generated, vendored, or as a package.
+- How the core is installed in a target repository: copied, generated, vendored, or as a package.
 - Which harness comes first, and how much harness-specific packaging is acceptable.
 - Where run records and verification artifacts live, and what is kept.
 - Local only, or local plus cloud sandboxes, and from which stage.

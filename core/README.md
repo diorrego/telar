@@ -1,8 +1,8 @@
-# loom
+# core
 
 Telar itself: the workshop defined as code. Everything an agentic workshop needs to make agent output trustworthy, versioned so it can be diffed, branched, rolled back, and improved by agents through pull requests.
 
-> **Status: empty by design.** Each folder has a `README.md` that is its contract: what belongs there and what does not. Formats, languages, and how the loom is installed into a target repository are decided by the first loom projects in [`../vault/projects/`](../vault/projects/), not here.
+> **Status: empty by design.** Each folder has a `README.md` that is its contract: what belongs there and what does not. Formats, languages, and how the core is installed into a target repository are decided by the first core projects in [`../vault/projects/`](../vault/projects/), not here.
 
 ## Layout
 
@@ -18,12 +18,8 @@ Folders are grouped by stage ([ADR 0006](../vault/decisions/0006-workshop-before
 | 2. Loop | [`workflows/`](workflows/) | | The development loop as declarative definitions: stages, transitions, human gates |
 | 2. Loop | [`evals/`](evals/) | | Scores over recorded runs, benchmarks replayed from past tasks, self-improvement proposals |
 
-Layer 1 of the pyramid (architecture) has no folder on purpose: it lives in the code of the repository the loom is applied to. Stage 3 (factory: unattended runs, sandboxes, durable runs, model routing) gets folders when it gets a plan.
+Layer 1 of the pyramid (architecture) has no folder on purpose: it lives in the code of the repository the core is applied to. Stage 3 (factory: unattended runs, sandboxes, durable runs, model routing) gets folders when it gets a plan.
 
 ## Targets
 
-The loom is applied to a target repository. Telar is its own first target: the loom must be able to check and verify the loom.
-
-## Why "loom"
-
-*Telar* is Spanish for loom. The vault is where the loom is designed; this folder is the loom. See [ADR 0003](../vault/decisions/0003-vault-and-loom.md).
+The core is applied to a target repository. Telar is its own first target: the core must be able to check and verify itself.

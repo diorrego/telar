@@ -2,7 +2,7 @@
 
 Instructions for coding agents working in the Telar vault. Human overview in `README.md`.
 
-The vault is **documentation, not code**. It holds the thinking behind Telar; the loom (`../loom/`) holds Telar itself. From here the loom is referenced (path, commit), never copied.
+The vault is **documentation, not code**. It holds the thinking behind Telar; the core (`../core/`) holds Telar itself. From here the core is referenced (path, commit), never copied.
 
 ## Map
 
@@ -25,7 +25,7 @@ The vault is **documentation, not code**. It holds the thinking behind Telar; th
 ## Decisions
 
 - One ADR per decision, from `templates/decision.md`. Numbered sequentially, never renumbered, never deleted.
-- `status: proposed | accepted | superseded`. An ADR written by an agent is born `proposed`; only Diego accepts it (or explicitly delegates the decision, which the ADR records).
+- `status: proposed | accepted | superseded`. An ADR written by an agent is born `proposed`, even when Diego delegated the choice; only Diego accepts it ([C-0001](qa/corrections/C-0001-metaphorical-folder-name.md)).
 - To change an accepted decision, write a new ADR and set `superseded_by` in the old one.
 - Keep the index in `decisions/README.md` in sync, in the same commit.
 

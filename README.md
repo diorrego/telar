@@ -1,6 +1,6 @@
 # Telar
 
-Telar (Spanish for *loom*) is an agentic software workshop: the environment, tools and habits with which a small team, starting with one engineer, builds ambitious, high-quality software with coding agents without losing understanding of what it ships.
+Telar is an agentic software workshop: the environment, tools and habits with which a small team, starting with one engineer, builds ambitious, high-quality software with coding agents without losing understanding of what it ships.
 
 > **Status: design phase, documentation only.** There is no code yet. See [ADR 0005](vault/decisions/0005-documentation-before-code.md).
 
@@ -17,6 +17,7 @@ Read more in the [vision](vault/foundations/vision.md) and the [principles](vaul
 ```
 telar/
 ├── CLAUDE.md            instructions for coding agents (AGENTS.md is a symlink to it)
+├── LICENSE              Apache License 2.0
 ├── vault/               the workshop notebook
 │   ├── foundations/     vision, principles, research synthesis, glossary
 │   ├── decisions/       architecture decision records (ADRs)
@@ -24,12 +25,12 @@ telar/
 │   ├── qa/              findings, agent corrections, exploratory sessions
 │   ├── templates/       templates for every note type
 │   └── views/           board.md: plans, findings and corrections by status
-└── loom/                Telar itself: the workshop defined as code (contracts only, for now)
+└── core/                Telar itself: the workshop defined as code (contracts only, for now)
     ├── checks/  verify/  skills/  rules/      stage 1: workshop
     └── agents/  workflows/  evals/            stage 2: loop
 ```
 
-The vault is where Telar is thought through. The loom is Telar itself. Nothing lands in `loom/` without a project in `vault/projects/` that explains why.
+The vault is where Telar is thought through. The core is Telar itself. Nothing lands in `core/` without a project in `vault/projects/` that explains why.
 
 ## Where to start
 
@@ -40,4 +41,8 @@ The vault works as an Obsidian vault (the board uses the Dataview plugin), but e
 
 ## Origin
 
-Telar comes out of research on agentic software factories, mainly talks by Armin Ronacher, Lauren Tan and Zach Lloyd. The research lives in a separate repository; its synthesis is in [vault/foundations/research.md](vault/foundations/research.md).
+Telar comes out of research on agentic software factories: a literature review, a critical review of an earlier factory design against recent studies, and talks by Armin Ronacher, Lauren Tan and Zach Lloyd. The synthesis, with every reference and the decisions each one drove, is in [vault/foundations/research.md](vault/foundations/research.md).
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE) and [ADR 0007](vault/decisions/0007-license-apache-2.md).

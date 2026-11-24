@@ -24,4 +24,4 @@ Guardrails a machine enforces every time, so neither the agent nor the reviewer 
 
 ## Open questions
 
-For the first loom project: the language and runner for custom checks; how checks are installed into a target repository; how to measure that a check worked (the correction it encodes stops recurring).
+For the first core project: the language and runner for custom checks; how checks are installed into a target repository; how to measure that a check worked (the correction it encodes stops recurring).

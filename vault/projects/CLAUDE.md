@@ -56,7 +56,7 @@ An iteration exists so that something works in a real workshop, not to leave doc
 | # | Stage | Reviewable output |
 |---|---|---|
 | 1 | Goal | Observable scenarios: who does what and what they see (for example: "Diego rejects an agent's use of a banned API; in the next session a check blocks it before review"). No scenarios, no design. |
-| 2 | Diagnosis | `DIAGNOSIS.md` against the real state: the loom, the target repository, harness and model capabilities, the research. |
+| 2 | Diagnosis | `DIAGNOSIS.md` against the real state: the core, the target repository, harness and model capabilities, the research. |
 | 3 | Plan | `PLAN.md` in vertical phases: each phase leaves one scenario working end to end, not a loose layer. Per scenario: how it is verified, what evidence remains, who does what. Open decisions are asked before building. |
 | 4 | Implementation | Only once code is allowed ([ADR 0005](../decisions/0005-documentation-before-code.md)). Tests first, one commit per phase, plan and log updated before each commit. |
 | 5 | Local verification | Each scenario run for real. Evidence (verification artifacts) saved in the iteration folder. What cannot be verified locally is said in writing. |

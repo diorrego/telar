@@ -10,7 +10,7 @@ Telar is an agentic software workshop: the checks, verification, skills, rules, 
 
 ## Current phase: documentation only
 
-There is **no code** in this repository, and none is written until a plan in `vault/projects/` has `status: active` and its current phase calls for code ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). Until then the work is research synthesis, decisions, diagnoses and plans, and the folder contracts in `loom/*/README.md`. If a task seems to need code, write or update the plan instead and stop there.
+There is **no code** in this repository, and none is written until a plan in `vault/projects/` has `status: active` and its current phase calls for code ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). Until then the work is research synthesis, decisions, diagnoses and plans, and the folder contracts in `core/*/README.md`. If a task seems to need code, write or update the plan instead and stop there.
 
 ## Repository map
 
@@ -19,7 +19,7 @@ There is **no code** in this repository, and none is written until a plan in `va
 | `vault/` | The workshop notebook: foundations, decisions, projects, QA, templates, views | `vault/CLAUDE.md` |
 | `vault/projects/` | One folder per initiative, each iteration self-contained in `v1/`, `v2/`... | `vault/projects/CLAUDE.md` |
 | `vault/qa/` | Findings (defects), corrections (times a human had to push back on an agent), exploratory sessions | `vault/qa/CLAUDE.md` |
-| `loom/` | Telar itself: the workshop defined as code. Folder contracts only, for now | `loom/CLAUDE.md` |
+| `core/` | Telar itself: the workshop defined as code. Folder contracts only, for now | `core/CLAUDE.md` |
 
 Read a folder's `CLAUDE.md` before working in it.
 
@@ -27,6 +27,7 @@ Read a folder's `CLAUDE.md` before working in it.
 
 - **English only.** Every file, note, ID, commit message and branch name. Diego may talk to you in Spanish; what lands in the repository is English.
 - **No em dashes.** Use commas, colons, parentheses or periods.
+- **Plain names.** Folders, files and components are named by what they hold, not by metaphor. When Diego proposes a name, use it unless there is a concrete problem with it, and state the problem ([C-0001](vault/qa/corrections/C-0001-metaphorical-folder-name.md)).
 - **Plans are born `proposed`.** Nothing in a plan is implemented until Diego explicitly says go for that plan. Answering an open question is not a go. See `vault/projects/CLAUDE.md`.
 - **The research is read-only input.** The folder that contains this repository (`../`) is a separate research repository. Reference its sources by public URL; never copy transcripts here and never edit files there.
 - **Decisions are recorded.** A choice that constrains future work (structure, naming, tooling, scope) gets an ADR in `vault/decisions/`. Never silently reverse an accepted ADR: write a new one that supersedes it.

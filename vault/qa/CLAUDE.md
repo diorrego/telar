@@ -4,7 +4,7 @@ QA for Telar has two inputs, kept apart because they are fixed differently, plus
 
 | Folder | What goes there | ID and file name | Fixed by |
 |---|---|---|---|
-| `findings/` | Defects: something in the loom, in the vault, or in software built with Telar does not behave as specified | `F-0001-short-title.md` | A direct fix or a project plan |
+| `findings/` | Defects: something in the core, in the vault, or in software built with Telar does not behave as specified | `F-0001-short-title.md` | A direct fix or a project plan |
 | `corrections/` | A human had to push back on an agent: wrong approach, ignored rule, slop, repeated instruction, false "done" | `C-0001-short-title.md` | Encoding it in the workshop so it cannot recur |
 | `sessions/` | Notes of one exploratory QA session | `YYYY-MM-DD-topic.md` | |
 
@@ -35,13 +35,13 @@ Then propose how to encode it, at the **lowest layer of the trust pyramid** that
 | 2. Check | A deterministic lint rule, type, boundary or test, whose error message explains how to fix the root cause | A lint rule that blocks timers used as quick fixes |
 | 3. Verification | A runtime, property-based or formal verification that catches it | A feature map driven run that proves the sidebar still works |
 | 4. Skill | A reusable procedure with its own CLI | A skill that always runs the app before claiming a UI change works |
-| 5. Rule | A line in a `CLAUDE.md` or in `loom/rules/` | Only when the mistake needs judgment and no check can express it |
+| 5. Rule | A line in a `CLAUDE.md` or in `core/rules/` | Only when the mistake needs judgment and no check can express it |
 
 `status: logged | encoded | dismissed`.
 
 - `encoded` requires `encoded_as` (the layer) and `encoded_in` (the commit or plan that did it).
 - `dismissed` requires a reason in the log (one-off, the human was mistaken, superseded).
-- While Telar has no code ([ADR 0005](../decisions/0005-documentation-before-code.md)), a correction stays `logged` with the proposed layer written in its "Encoding" section. Logged corrections are the backlog of the first loom projects.
+- While Telar has no code ([ADR 0005](../decisions/0005-documentation-before-code.md)), a correction stays `logged` with the proposed layer written in its "Encoding" section. Logged corrections are the backlog of the first core projects.
 
 **Recurrence.** If a correction repeats an earlier one, do not open a new file: increment `occurrences` in the original and add a dated line to its log. A correction with 3 or more occurrences that is still `logged` is a candidate for a project plan (born `proposed`, with `origin: C-NNNN`).
 

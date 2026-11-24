@@ -22,8 +22,8 @@ See [`foundations/research.md`](../foundations/research.md).
 
 Telar is built in three stages. Each starts only when the previous one meets its exit criteria, defined in [`foundations/vision.md`](../foundations/vision.md).
 
-1. **Workshop.** The inner loop. Loom folders: `checks/`, `verify/`, `skills/`, `rules/`.
-2. **Loop.** The outer loop. Loom folders: `agents/`, `workflows/`, `evals/`.
+1. **Workshop.** The inner loop. Core folders: `checks/`, `verify/`, `skills/`, `rules/`.
+2. **Loop.** The outer loop. Core folders: `agents/`, `workflows/`, `evals/`.
 3. **Factory.** Scale. Folders created when it gets a plan.
 
 ## Consequences

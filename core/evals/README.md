@@ -7,8 +7,8 @@ Measurement of the workshop on its own work, and the self-improvement loop that 
 ## Belongs here
 
 - Scores (online evals): judges, model or human, that grade recorded runs on one failure mode each (for example, redundant tests written).
-- Benchmarks: suites built from real past tasks, replayed against other models, harnesses or loom versions to compare cost and quality.
-- Self-improvement: aggregation of failed scores and logged corrections into proposals, delivered as pull requests to the loom.
+- Benchmarks: suites built from real past tasks, replayed against other models, harnesses or core versions to compare cost and quality.
+- Self-improvement: aggregation of failed scores and logged corrections into proposals, delivered as pull requests to the core.
 - Definitions of the workshop metrics in [`vision.md`](../../vault/foundations/vision.md): corrections per session, recurrence, revert rate, attention per change, cost per change, cycle time.
 
 ## Does not belong here

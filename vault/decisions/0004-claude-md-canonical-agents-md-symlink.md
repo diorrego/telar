@@ -16,14 +16,14 @@ Claude Code reads `CLAUDE.md`. Other harnesses (Codex, Pi, Cursor and more) read
 
 - `CLAUDE.md` is the only file edited.
 - `AGENTS.md` is a relative symlink in the same folder (`ln -s CLAUDE.md AGENTS.md`).
-- Today this applies to the repository root, `vault/`, `vault/projects/`, `vault/qa/` and `loom/`. Every new folder with its own `CLAUDE.md` gets the symlink in the same commit.
+- Today this applies to the repository root, `vault/`, `vault/projects/`, `vault/qa/` and `core/`. Every new folder with its own `CLAUDE.md` gets the symlink in the same commit.
 
 The mirror holds by construction, not by discipline: a deterministic mechanism over a prose rule ([principle 3](../foundations/principles.md)). No sync script is needed.
 
 ## Consequences
 
 - Git stores symlinks. On a Windows checkout without symlink support, `AGENTS.md` becomes a text file containing the path; that platform is not a target today.
-- An editor or tool that replaces the symlink with a regular file on save breaks the mirror. A future check in `loom/checks/` should verify that every `AGENTS.md` is a symlink to its sibling `CLAUDE.md`.
+- An editor or tool that replaces the symlink with a regular file on save breaks the mirror. A future check in `core/checks/` should verify that every `AGENTS.md` is a symlink to its sibling `CLAUDE.md`.
 
 ## Alternatives considered
 
