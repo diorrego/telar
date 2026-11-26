@@ -39,6 +39,7 @@ Read a folder's `CLAUDE.md` before working in it.
 ## Dogfooding: Telar is built the way it says software should be built
 
 - **Log corrections.** When Diego corrects you (rejects an output, redirects an approach, repeats an instruction, or finds that something you called done is not), log it in `vault/qa/corrections/` before the session ends, following `vault/qa/CLAUDE.md`. Corrections are the raw material of Telar.
+- **Read the evidence yourself.** Research, diagnoses and plans are written from sources the session read itself, in logical parts announced to Diego up front. Do not delegate reading or research to subagents: a subagent's summary does not count as read in an evidence inventory ([C-0003](vault/qa/corrections/C-0003-research-delegated-to-subagents.md)).
 - **Encode low.** When proposing how to prevent a mistake, prefer the lowest layer of the trust pyramid: architecture, then a deterministic check, then verification, then a skill, and a prose rule only as a last resort (principle 4 in `vault/foundations/principles.md`).
 - **Summarize for the owner.** Before closing a substantial piece of work, give Diego a summary he can judge in a minute: what changed, why, what evidence shows it works, what is still open.
 
