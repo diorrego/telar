@@ -30,7 +30,7 @@ When a human has to correct an agent, the environment allowed the mistake. Log i
 
 Agents produce verification artifacts a human can judge quickly: screenshots, videos, state charts, check and test output, a one-minute summary. Line by line review is reserved for where checks and verification have not yet earned trust.
 
-*Source:* Tan, Lloyd; Ronacher (summaries before verification). *In Telar:* verification artifacts and the owner review stage.
+*Source:* Tan, Lloyd; Ronacher (summaries before verification). *In Telar:* verification artifacts, the owner review stage, and review pages: every decision and design reaches Diego as a visual page before he approves it ([ADR 0011](../decisions/0011-review-pages-before-decisions.md)).
 
 ## 6. Push back
 

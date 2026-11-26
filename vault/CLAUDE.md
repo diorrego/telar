@@ -13,6 +13,7 @@ The vault is **documentation, not code**. It holds the thinking behind Telar; th
 | `evidence/` | The research conversations, documents, prototype and figures, translated, ordered by date, indexed in `evidence/README.md` | this file, "Evidence" |
 | `projects/` | One folder per initiative, each iteration self-contained in `vN/` | `projects/CLAUDE.md` |
 | `qa/` | `findings/`, `corrections/`, `sessions/` | `qa/CLAUDE.md` |
+| `reviews/` | Review pages: standalone HTML pages, named `YYYY-MM-DD-topic.html`, that Diego reads before he decides | this file, "Review pages" |
 | `templates/` | One template per note type. Copy a template to create a note; never edit it in place for a specific note | |
 | `views/` | `board.md`: Dataview queries over frontmatter. It filters; it never holds state | |
 
@@ -29,6 +30,15 @@ The vault is **documentation, not code**. It holds the thinking behind Telar; th
 - `status: proposed | accepted | superseded`. An ADR written by an agent is born `proposed`, even when Diego delegated the choice; only Diego accepts it ([C-0001](qa/corrections/C-0001-metaphorical-folder-name.md)).
 - To change an accepted decision, write a new ADR and set `superseded_by` in the old one.
 - Keep the index in `decisions/README.md` in sync, in the same commit.
+- ADRs are presented for acceptance with their review page, and the ADR records the page's path.
+
+## Review pages
+
+- Every decision asked of Diego (accept ADRs, say go to a plan, answer open decisions) and every review of research, a diagnosis, a design or a model comes with a review page ([ADR 0011](decisions/0011-review-pages-before-decisions.md)). A request without its page is incomplete.
+- Contents follow `templates/review.md`: what is asked, one line per decision, the context, diagrams for every design, model or flow, each decision with its options and recommendation, and what comes next.
+- Claude Code publishes the page as a private Artifact; other harnesses give the path of the HTML file. The page is saved here in every case, as a standalone document, and the plan log or the ADR records its path and link.
+- Pages are in the language the user indicates (Spanish, for Diego) and link to their English sources. When a page and its source disagree, the source wins and the page is rebuilt.
+- This repository is public: a page here holds nothing private. An installation's pages stay in its own repository.
 
 ## Evidence
 

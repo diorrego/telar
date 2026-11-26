@@ -20,13 +20,14 @@ There is **no code** in this repository, and none is written until a plan in `va
 | `vault/evidence/` | The research conversations and documents, translated. Read the relevant ones before proposing anything | `vault/CLAUDE.md`, "Evidence" |
 | `vault/projects/` | One folder per initiative, each iteration self-contained in `v1/`, `v2/`... | `vault/projects/CLAUDE.md` |
 | `vault/qa/` | Findings (defects), corrections (times a human had to push back on an agent), exploratory sessions | `vault/qa/CLAUDE.md` |
+| `vault/reviews/` | Review pages: the visual pages Diego reads before he decides | `vault/CLAUDE.md`, "Review pages" |
 | `core/` | The framework every installation shares. Not defined yet: only its instructions and a placeholder | `core/CLAUDE.md` |
 
 Read a folder's `CLAUDE.md` before working in it.
 
 ## Hard rules
 
-- **English only.** Every file, note, ID, commit message and branch name. Diego may talk to you in Spanish; what lands in the repository is English.
+- **English only.** Every file, note, ID, commit message and branch name. Diego may talk to you in Spanish; what lands in the repository is English. The one exception: review pages in `vault/reviews/` are in the language the user indicates ([ADR 0011](vault/decisions/0011-review-pages-before-decisions.md)).
 - **No em dashes.** Use commas, colons, parentheses or periods.
 - **Plain names.** Folders, files and components are named by what they hold, not by metaphor. When Diego proposes a name, use it unless there is a concrete problem with it, and state the problem ([C-0001](vault/qa/corrections/C-0001-metaphorical-folder-name.md)).
 - **Plans are born `proposed`.** Nothing in a plan is implemented until Diego explicitly says go for that plan. Answering an open question is not a go. See `vault/projects/CLAUDE.md`.
@@ -41,6 +42,7 @@ Read a folder's `CLAUDE.md` before working in it.
 - **Log corrections.** When Diego corrects you (rejects an output, redirects an approach, repeats an instruction, or finds that something you called done is not), log it in `vault/qa/corrections/` before the session ends, following `vault/qa/CLAUDE.md`. Corrections are the raw material of Telar.
 - **Read the evidence yourself.** Research, diagnoses and plans are written from sources the session read itself, in logical parts announced to Diego up front. Do not delegate reading or research to subagents: a subagent's summary does not count as read in an evidence inventory ([C-0003](vault/qa/corrections/C-0003-research-delegated-to-subagents.md)).
 - **Encode low.** When proposing how to prevent a mistake, prefer the lowest layer of the trust pyramid: architecture, then a deterministic check, then verification, then a skill, and a prose rule only as a last resort (principle 4 in `vault/foundations/principles.md`).
+- **Show decisions on a review page.** Before asking Diego to decide (accept ADRs, say go to a plan, answer open decisions) or to review research, a diagnosis, a design or a model, build a visual review page following `vault/templates/review.md`. In Claude Code, publish it as an Artifact and give him the link; in Codex, OpenCode or another harness, give him the path of the HTML file. Either way, save it in `vault/reviews/` and record its path where the decision is recorded ([ADR 0011](vault/decisions/0011-review-pages-before-decisions.md), [C-0006](vault/qa/corrections/C-0006-decisions-asked-without-a-visual-page.md)).
 - **Summarize for the owner.** Before closing a substantial piece of work, give Diego a summary he can judge in a minute: what changed, why, what evidence shows it works, what is still open.
 
 ## Session routine

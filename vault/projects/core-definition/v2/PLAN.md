@@ -78,7 +78,7 @@ Runs once the installation has logged corrections of its own.
 
 ### Phase 5: formats inventory
 
-- [ ] Write `formats.md`: every format the core must define (manifest, dossier and its files, run record, decision record, correction, rule record, verification artifact, metrics row), plus the template changes proposed by C-0004 and C-0005, with Telar names (D6), level and versioning policy. Prose and tables only.
+- [ ] Write `formats.md`: every format the core must define (manifest, dossier and its files, run record, decision record, review page, correction, rule record, verification artifact, metrics row), plus the template changes proposed by C-0004 and C-0005, with Telar names (D6), level and versioning policy. Prose and tables only.
 - [ ] Verification: every T and M row of the catalog points to the format that carries it, or says it needs none.
 
 ### Phase 6: maturity model and measurement (S6)
@@ -108,3 +108,4 @@ Runs once the installation has comparable work items, at the latest during its p
 ## Log
 
 - 2026-11-26: Diego accepted [ADR 0010](../../../decisions/0010-first-installation-is-a-new-project.md). This iteration opened in the same commit, superseding [v1](../v1/PLAN.md): S1, S3 and S4 retargeted to the new first installation, D7 settled by the ADR, S6 and D8 added for measurement without history, and the catalog's scope statement added to S2 from C-0005. Status `proposed`.
+- 2026-11-26: Diego set the review page rule ([ADR 0011](../../../decisions/0011-review-pages-before-decisions.md), correction [C-0006](../../../qa/corrections/C-0006-decisions-asked-without-a-visual-page.md)). N-26 enters phase 2 as settled direction: every human gate comes with a visual review page, delivered as an Artifact in Claude Code and as an HTML file in other harnesses (level M for the delivery). The review page joins the formats of phase 5, and a check for proposed plans and ADRs without one is a candidate for the build project. The go for this plan will come with its own review page.

@@ -44,6 +44,7 @@ superseded_by:        # optional: ../vN/PLAN.md when another iteration takes ove
 
 Rules:
 
+- **A plan is presented with its review page.** The diagnosis and the plan reach Diego as a visual page, with the open decisions drawn and the recommendation for each ([ADR 0011](../decisions/0011-review-pages-before-decisions.md)). The log records the page's path.
 - **Writing a plan ends at `proposed`.** No agent implements a `proposed` plan. It moves to `active` only when Diego explicitly asks for that plan ("go with X", "implement it"). Answering an open decision is not a go.
 - Plans created by agents (for example from a recurring correction) are born `proposed` with the triggering ID as `origin`, and never trigger implementation by themselves.
 - A status change updates `updated` and the log in the same commit.
@@ -60,7 +61,7 @@ An iteration exists so that something works in a real workshop, not to leave doc
 | 3 | Plan | `PLAN.md` in vertical phases: each phase leaves one scenario working end to end, not a loose layer. Per scenario: how it is verified, what evidence remains, who does what. Open decisions are asked before building. |
 | 4 | Implementation | Only once code is allowed ([ADR 0005](../decisions/0005-documentation-before-code.md)). Tests first, one commit per phase, plan and log updated before each commit. |
 | 5 | Local verification | Each scenario run for real. Evidence (verification artifacts) saved in the iteration folder. What cannot be verified locally is said in writing. |
-| 6 | Owner review | Diego gets a one-minute summary plus the evidence, and tests what involves his judgment. Iterate until his OK. |
+| 6 | Owner review | Diego gets a review page (ADR 0011) with the evidence and a one-minute summary, and tests what involves his judgment. Iterate until his OK. |
 | 7 | Release | Merged through a pull request with Diego's OK, and versioned. |
 | 8 | Verification in use | Each scenario checked in a real workshop (Telar's own repository or a real product repository). Only then is the plan `shipped`. |
 | 9 | Closeout | `CLOSEOUT.md`: what was learned, which corrections became checks, what moves to the next iteration. Nothing is left half-done without a note. |

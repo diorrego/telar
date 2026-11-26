@@ -43,6 +43,7 @@ The vocabulary of Telar. Use these terms exactly. A new concept gets an entry in
 | **Product spec** | The long-lived description of what a feature must do: invariants and acceptance examples. Contrast with technical spec. |
 | **Project baseline** | What a project's repositories must provide for Telar to work: CI workflows, branch protection, CODEOWNERS, lint, tests, an acceptance path, instruction files, a memory location, a verifier identity, the manifest. |
 | **Research (stage)** | Investigating a need before agreeing the requirement, with sources and open questions as output; it may change the requirement or end in not building. |
+| **Review page** | A self-contained HTML page, in the language the user indicates, that shows visually what is being decided (one line per decision, options, diagrams, evidence) before the owner approves. Published as an Artifact in Claude Code, opened as a file in other harnesses, saved in `vault/reviews/` ([ADR 0011](../decisions/0011-review-pages-before-decisions.md)). |
 | **Rule** | Anything a workshop depends on that should hold every time. In the trust pyramid, "rule" also names layer 5: prose guidance that requires judgment, the last resort. |
 | **Score** | An online eval: a judge (model or person) that grades recorded runs on one failure mode (Lloyd). |
 | **Self-improvement loop** | Agents aggregate failed scores and corrections into proposed changes, delivered as pull requests that a person approves (Lloyd). |

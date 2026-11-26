@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Review page (ADR 0011). Published as a private Artifact: https://claude.ai/artifact/T5ux1fuZm3f1QLYbih8zjx -->
+<title>Páginas de revisión en Telar</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: a single review column, read top to bottom: what is asked, the gist, the flow diagram, each part of the decision, what comes next. */
+:root {
+  --bg: #f5f6f9;
+  --surface: #ffffff;
+  --surface-2: #f0f2f8;
+  --ink: #171c2b;
+  --muted: #586074;
+  --rule: #d9deea;
+  --accent: #3d4cc4;
+  --accent-soft: #e7e9fb;
+  --yours: #0d6b4f;
+  --yours-soft: #ddf2ea;
+  --mine: #8a5a00;
+  --mine-soft: #fbf0d9;
+  --quote: #eef0f6;
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10131b; --surface: #171b26; --surface-2: #1d2230; --ink: #e4e7f0; --muted: #9aa2b6; --rule: #2a3040;
+    --accent: #9ea8ff; --accent-soft: #232848; --yours: #6fd6ac; --yours-soft: #15302a; --mine: #f0bf5e; --mine-soft: #33280f; --quote: #1d2230;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10131b; --surface: #171b26; --surface-2: #1d2230; --ink: #e4e7f0; --muted: #9aa2b6; --rule: #2a3040;
+  --accent: #9ea8ff; --accent-soft: #232848; --yours: #6fd6ac; --yours-soft: #15302a; --mine: #f0bf5e; --mine-soft: #33280f; --quote: #1d2230;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.wrap { max-width: 900px; margin: 0 auto; padding-block: 40px 72px; display: grid; gap: 26px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+header.top { display: grid; gap: 12px; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 42px); line-height: 1.1; margin: 0; text-wrap: balance; }
+.lead { font-size: 18px; margin: 0; max-width: 65ch; }
+section.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 24px 26px; min-width: 0; }
+section.card h2 { font-family: var(--font-display); font-weight: 600; font-size: 22px; margin: 0 0 12px; text-wrap: balance; }
+section.card h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 20px 0 8px; }
+p, li { max-width: 70ch; }
+p { margin: 0 0 10px; }
+ul, ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+ol li::marker { font-family: var(--font-mono); color: var(--accent); font-size: 13px; }
+.ask { background: var(--accent-soft); border-color: transparent; }
+.ask ol { gap: 12px; }
+.answer { margin-top: 14px; font-size: 15px; color: var(--muted); }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+.who { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.who.yours { color: var(--yours); background: var(--yours-soft); }
+.who.mine { color: var(--mine); background: var(--mine-soft); }
+blockquote { margin: 4px 0 14px; padding: 12px 16px; background: var(--quote); border-radius: 8px; font-size: 15.5px; }
+blockquote footer { margin-top: 6px; font-size: 13px; color: var(--muted); }
+.diagram { overflow-x: auto; }
+.diagram svg { display: block; min-width: 760px; width: 100%; height: auto; }
+svg .box { fill: var(--surface-2); stroke: var(--rule); stroke-width: 1.5; }
+svg .box.key { fill: var(--accent-soft); stroke: var(--accent); }
+svg .t { fill: var(--ink); font-family: var(--font-display); font-weight: 600; font-size: 14px; }
+svg .s { fill: var(--muted); font-family: var(--font-body); font-size: 12.5px; }
+svg .m { fill: var(--ink); font-family: var(--font-mono); font-size: 13px; }
+svg .arrow { stroke: var(--muted); stroke-width: 1.6; fill: none; }
+svg .loop { stroke: var(--accent); stroke-width: 1.4; fill: none; stroke-dasharray: 5 4; }
+svg .head { fill: var(--muted); }
+svg .head.acc { fill: var(--accent); }
+svg .note { fill: var(--accent); font-family: var(--font-body); font-size: 12.5px; }
+.legend { font-size: 13.5px; color: var(--muted); margin-top: 10px; }
+.option { border-left: 3px solid var(--rule); padding-left: 14px; display: grid; gap: 4px; }
+.option.rec { border-left-color: var(--accent); }
+.options { display: grid; gap: 12px; margin-top: 6px; }
+.option strong { font-weight: 600; }
+.files { columns: 2; column-gap: 28px; font-size: 14px; }
+.files li { break-inside: avoid; }
+@media (max-width: 640px) {
+  section.card { padding: 18px 16px; }
+  .files { columns: 1; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <span class="eyebrow">telar · ADR 0011 · C-0006 · 26 nov 2026</span>
+    <h1>Páginas de revisión en Telar</h1>
+    <p class="lead">Desde hoy, toda decisión que un agente te pida en Telar llega con una página visual como esta antes de implementar. La regla es tuya y ya está aplicada en Telar y en wondeya. Agregué dos detalles que necesito que confirmes.</p>
+  </header>
+
+  <section class="card ask" aria-labelledby="pido">
+    <h2 id="pido">Qué necesito de ti</h2>
+    <ol>
+      <li><strong>Guardar la página en el repo también cuando se usa Claude Code.</strong> Recomiendo que sí: queda el registro de lo que viste al decidir, y funciona igual con cualquier agente.</li>
+      <li><strong>Las páginas en español, aunque el repo sea en inglés.</strong> Recomiendo que sí, como excepción a la regla de inglés: son una vista para ti, y las fuentes siguen en inglés.</li>
+      <li><strong>La plantilla de seis secciones</strong> (<code>vault/templates/review.md</code>) con que se arma cada página, incluida esta.</li>
+    </ol>
+    <p class="answer">Para responder: "acepto 0011", o dime qué cambiar. Al aceptar, el ADR 0011 pasa de propuesto a aceptado.</p>
+  </section>
+
+  <section class="card" aria-labelledby="resumen">
+    <h2 id="resumen">En una línea cada parte</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Parte</th><th>Qué fija</th><th>De quién</th></tr></thead>
+        <tbody>
+          <tr><td>1. Cuándo</td><td>Antes de pedirte cualquier decisión, o que revises research, diagnóstico, diseño o modelo, el agente arma la página. Pedir sin página es un pedido incompleto.</td><td><span class="who yours">tuya</span></td></tr>
+          <tr><td>2. Qué muestra</td><td>Lo que se decide en una línea, opciones con recomendación, evidencia, consecuencias, y diagramas para diseños, modelos y flujos.</td><td><span class="who yours">tuya</span></td></tr>
+          <tr><td>3. Por agente</td><td>Claude Code: Artifact privado y te da el link. Codex, OpenCode u otro: archivo HTML y te da la ruta.</td><td><span class="who yours">tuya</span></td></tr>
+          <tr><td>4. Se guarda</td><td>Siempre en <code>vault/reviews/</code>, y el ADR o el plan anotan la ruta.</td><td><span class="who mine">agregada</span></td></tr>
+          <tr><td>5. Idioma</td><td>Español para ti; las fuentes siguen en inglés y mandan si hay diferencia.</td><td><span class="who mine">agregada</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="contexto">
+    <h2 id="contexto">Contexto</h2>
+    <blockquote>
+      acá veo un problema en telar. crear un artifact cuando se ocupe claude code o si se ocupa otro agente como codex u opencode crear un html que diagrame y muestre de forma visual los diseños, decisiones, modelos que genere para aprobar decisiones antes de implementar. esto ayudará a acelerar la toma de decisiones y el entendimiento del research y posterior diseño
+      <footer>Tú, hoy</footer>
+    </blockquote>
+    <p>Ya lo habías pedido en la investigación, el 24 de noviembre:</p>
+    <blockquote>
+      dentro del flujo, tienes que incluir tu revisión. para eso son importantes los html o los artefactos de claude que agilizan las explicaciones mediante diagramas.
+      <footer>Tú, 24 nov 2026 (requisito R16 del diagnóstico de <code>core-definition</code>)</footer>
+    </blockquote>
+    <p>El diseño del kit también lo tenía: un <code>summary.html</code> en cada expediente para la decisión humana. Aun así, hasta hoy todas las decisiones se te pidieron en archivos Markdown y tablas en el chat: los planes de <code>core-definition</code> v1 y v2, los de wondeya y sus 8 ADR. La primera página visual se hizo solo cuando la pediste. Quedó registrado como la corrección C-0006.</p>
+  </section>
+
+  <section class="card" aria-labelledby="flujo">
+    <h2 id="flujo">Cómo funciona</h2>
+    <div class="diagram" role="img" aria-label="Flujo: las fuentes en inglés se convierten en una página de revisión en español, que se guarda en vault/reviews y se entrega como Artifact en Claude Code o como archivo HTML en otros agentes. Diego lee y decide; si pide cambios, la página se rehace. La decisión se registra con la ruta de la página y recién después se implementa.">
+      <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head acc" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <!-- row 1 -->
+        <rect class="box" x="20" y="30" width="190" height="76" rx="8"/>
+        <text class="t" x="36" y="62">Fuentes en inglés</text>
+        <text class="s" x="36" y="84">diagnóstico, plan, ADRs</text>
+
+        <rect class="box key" x="250" y="30" width="190" height="76" rx="8"/>
+        <text class="t" x="266" y="62">Página de revisión</text>
+        <text class="s" x="266" y="84">HTML en español, visual</text>
+
+        <rect class="box" x="480" y="30" width="190" height="76" rx="8"/>
+        <text class="m" x="496" y="62">vault/reviews/</text>
+        <text class="s" x="496" y="84">queda en el repo</text>
+
+        <rect class="box" x="705" y="10" width="180" height="58" rx="8"/>
+        <text class="t" x="719" y="34">Claude Code</text>
+        <text class="s" x="719" y="54">Artifact privado: link</text>
+
+        <rect class="box" x="705" y="80" width="180" height="58" rx="8"/>
+        <text class="t" x="719" y="104">Codex · OpenCode</text>
+        <text class="s" x="719" y="124">archivo HTML: la ruta</text>
+
+        <!-- row 2 -->
+        <rect class="box key" x="705" y="200" width="180" height="76" rx="8"/>
+        <text class="t" x="719" y="232">Diego lee y decide</text>
+        <text class="s" x="719" y="254">acepta o pide cambios</text>
+
+        <rect class="box" x="480" y="200" width="190" height="76" rx="8"/>
+        <text class="t" x="496" y="232">Se registra</text>
+        <text class="s" x="496" y="254">con la ruta de la página</text>
+
+        <rect class="box" x="250" y="200" width="190" height="76" rx="8"/>
+        <text class="t" x="266" y="232">Se implementa</text>
+        <text class="s" x="266" y="254">solo después del go</text>
+
+        <!-- arrows -->
+        <path class="arrow" d="M210,68 L246,68" marker-end="url(#ah)"/>
+        <path class="arrow" d="M440,68 L476,68" marker-end="url(#ah)"/>
+        <path class="arrow" d="M670,60 L701,40" marker-end="url(#ah)"/>
+        <path class="arrow" d="M670,76 L701,104" marker-end="url(#ah)"/>
+        <path class="arrow" d="M885,40 Q895,40 895,60 L895,225 Q895,238 889,238" marker-end="url(#ah)"/>
+        <path class="arrow" d="M885,110 L892,110"/>
+        <path class="arrow" d="M705,238 L674,238" marker-end="url(#ah)"/>
+        <path class="arrow" d="M480,238 L444,238" marker-end="url(#ah)"/>
+        <!-- change loop -->
+        <path class="loop" d="M760,200 L760,168 L345,168 L345,110" marker-end="url(#ahc)"/>
+        <text class="note" x="420" y="160">si pides cambios, la página se rehace</text>
+      </svg>
+    </div>
+    <p class="legend">Las cajas destacadas son las dos que la regla agrega al flujo: la página y tu lectura antes de decidir.</p>
+  </section>
+
+  <section class="card" aria-labelledby="parte4">
+    <h2 id="parte4">Parte 4: guardar la página en el repo</h2>
+    <p>Con Claude Code, el Artifact vive en claude.ai y no en el repo. Propongo guardar también el HTML en <code>vault/reviews/AAAA-MM-DD-tema.html</code>, y que el ADR o el log del plan anoten la ruta y el link.</p>
+    <div class="options">
+      <div class="option rec"><strong>Guardar siempre (recomendado)</strong><span>Queda la prueba de lo que viste cuando decidiste, igual que el <code>summary.html</code> del kit. Funciona igual con Claude Code, Codex u OpenCode, y no depende de claude.ai.</span></div>
+      <div class="option"><strong>Solo el Artifact en Claude Code</strong><span>Menos archivos, pero sin registro en el repo y distinto según el agente.</span></div>
+    </div>
+    <h3>Ya hecho, a modo de prueba</h3>
+    <p>La página de los 8 ADR de wondeya está guardada en <code>wondeya/vault/reviews/2026-11-26-adrs-0001-0008.html</code>, y esta en <code>telar/vault/reviews/2026-11-26-review-pages.html</code>. Si eliges "solo el Artifact", las borro.</p>
+  </section>
+
+  <section class="card" aria-labelledby="parte5">
+    <h2 id="parte5">Parte 5: idioma de las páginas</h2>
+    <p>El ADR 0002 dice "todo en inglés" en el repo. Hoy pediste el artefacto en español, así que propongo una sola excepción: las páginas de revisión van en tu idioma.</p>
+    <div class="options">
+      <div class="option rec"><strong>Español (recomendado)</strong><span>Lees más rápido. La página enlaza a las fuentes en inglés, y si hay una diferencia mandan las fuentes y la página se rehace. Tus citas van con tus palabras originales.</span></div>
+      <div class="option"><strong>Inglés, como el resto del repo</strong><span>Sin excepción a la regla, pero más lento de leer para ti.</span></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="plantilla">
+    <h2 id="plantilla">La plantilla: seis secciones, en este orden</h2>
+    <ol>
+      <li><strong>Qué necesito de ti:</strong> las decisiones por ID, cada una respondible en una línea, y cómo responder.</li>
+      <li><strong>En una línea cada una:</strong> una tabla con qué fija cada una y la recomendación.</li>
+      <li><strong>Contexto:</strong> el pedido o el problema en tus palabras, y la evidencia.</li>
+      <li><strong>Diagramas:</strong> todo diseño, modelo, flujo, secuencia de etapas o arquitectura se dibuja, no solo se describe.</li>
+      <li><strong>Cada decisión:</strong> opciones con la recomendación primero y por qué, qué cambia, consecuencias, alternativas descartadas. Lo que el agente agrega más allá de tus palabras se marca.</li>
+      <li><strong>Qué queda abierto y qué sigue</strong> después de cada respuesta posible.</li>
+    </ol>
+    <p class="legend">Antes de enviar: se lee en unos cinco minutos, funciona en el teléfono y en tema claro y oscuro, los IDs y números coinciden con las fuentes, y nada privado va en una página de un repo público.</p>
+  </section>
+
+  <section class="card" aria-labelledby="cambios">
+    <h2 id="cambios">Qué cambió</h2>
+    <h3>Telar (público)</h3>
+    <ul class="files">
+      <li><code>decisions/0011</code>: la decisión, propuesta</li>
+      <li><code>qa/corrections/C-0006</code>: la corrección</li>
+      <li><code>templates/review.md</code>: la plantilla</li>
+      <li><code>CLAUDE.md</code>: la regla y la excepción de idioma</li>
+      <li><code>vault/CLAUDE.md</code>: sección "Review pages"</li>
+      <li><code>projects/CLAUDE.md</code>: un plan se presenta con su página</li>
+      <li>principio 5, glosario, nota en ADR 0002</li>
+      <li><code>core-definition</code> v2: N-26 pasa a dirección fijada; la página entra en los formatos de la fase 5</li>
+    </ul>
+    <h3>wondeya (privado, local)</h3>
+    <ul class="files">
+      <li><code>CLAUDE.md</code> y <code>vault/CLAUDE.md</code>: la misma regla</li>
+      <li><code>templates/review.md</code>: copia de la plantilla</li>
+      <li><code>vault/reviews/</code>: la página de los 8 ADR</li>
+      <li><code>decisions/README.md</code>: enlace a esa página</li>
+    </ul>
+  </section>
+
+  <section class="card" aria-labelledby="sigue">
+    <h2 id="sigue">Qué sigue</h2>
+    <ul>
+      <li>Si aceptas, el ADR 0011 pasa a aceptado. Si cambias la parte 4 o la 5, ajusto la regla y la plantilla en los dos repos.</li>
+      <li>Lo próximo que te pida llega con su página: la partida de <code>core-definition</code> v2 y la aceptación de los 8 ADR de wondeya (esa página ya existe).</li>
+      <li>Cuando se permita código, un chequeo hará fallar un plan o un ADR propuesto que no tenga su página enlazada. Queda como candidato en <code>core-definition</code>.</li>
+    </ul>
+  </section>
+</div>
+
+</body>
+</html>

@@ -21,6 +21,8 @@ Everything that lands in the repository is in English: documents, notes, templat
 - One vocabulary, fixed in [`foundations/glossary.md`](../foundations/glossary.md).
 - Corrections logged in Spanish during a session are translated when written to the ledger, keeping the meaning of Diego's words.
 
+> **Note, 2026-11-26.** Review pages in `vault/reviews/` are written in the language the user indicates, as views of English sources ([ADR 0011](0011-review-pages-before-decisions.md)).
+
 ## Alternatives considered
 
 - **Spanish, or mixed.** Rejected by Diego.

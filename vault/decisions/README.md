@@ -14,3 +14,4 @@ Architecture decision records. One file per decision, numbered, never renumbered
 | [0008](0008-telar-is-a-method-and-framework.md) | Telar is a method and framework; woku first; core defined by a project | accepted; decision 2 superseded by 0010 |
 | [0009](0009-research-evidence-in-the-vault.md) | Research evidence lives in the vault, translated | accepted |
 | [0010](0010-first-installation-is-a-new-project.md) | The first installation is a new project, wondeya; woku waits | accepted |
+| [0011](0011-review-pages-before-decisions.md) | Every decision is shown on a visual review page before it is approved | accepted |
