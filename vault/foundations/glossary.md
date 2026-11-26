@@ -30,7 +30,7 @@ The vocabulary of Telar. Use these terms exactly. A new concept gets an entry in
 | **Harness** | The program that runs a model as a coding agent (Claude Code, Codex, OpenCode, Pi and others). Telar is not a harness; it uses them. |
 | **Human gate** | A gate that requires a person's decision, with the evidence named in advance. |
 | **Inner loop** | One person working with interactive agents on one change. |
-| **Installation** | A workshop that uses Telar to model its rules. Woku is the first and, for now, only one ([ADR 0008](../decisions/0008-telar-is-a-method-and-framework.md)). |
+| **Installation** | A workshop that uses Telar to model its rules. Wondeya, a new product started from zero, is the first and, for now, only one; woku is paused ([ADR 0010](../decisions/0010-first-installation-is-a-new-project.md)). |
 | **Iteration** | One complete pass at a vault project, self-contained in its own `vN/` folder. |
 | **Level** | Where an element of Telar belongs: **T** Telar invariant (the same in every installation); **M** Telar mechanism with project values; **B** project baseline (the project must provide it; Telar states the minimum and checks it); **P** project only (the project's own rules). Proposed in the `core-definition` diagnosis. |
 | **Line** | The sequence of stages a work item follows, chosen by risk: light, standard or strict. |

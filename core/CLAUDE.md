@@ -12,7 +12,7 @@ Do not add folders, contracts, schemas, examples or placeholders here to "prepar
 
 These rules will apply, and the structure ADR may refine them:
 
-- **Generic only.** Nothing specific to an installation (woku or any other) lives here. Project rules, values and content live in the project's repositories.
+- **Generic only.** Nothing specific to an installation (wondeya, woku or any other) lives here. Project rules, values and content live in the project's repositories.
 - **Traceability.** Every artifact traces to a vault project iteration and, when it encodes a correction or fixes a finding, to its ID. The commit message cites it.
 - **Lowest layer first.** Prefer a check over a verification over a skill over a prose rule (principle 4).
 - **Thin and replaceable.** No assumption of one harness or model unless the structure ADR says so. Few dependencies, open formats.

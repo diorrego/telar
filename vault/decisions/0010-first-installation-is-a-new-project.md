@@ -1,8 +1,8 @@
 ---
 id: ADR-0010
-status: proposed
+status: accepted
 date: 2026-11-26
-decided_by: proposed by claude; the change of installation is diego's
+decided_by: diego (accepted 2026-11-26); written by claude
 superseded_by:
 ---
 
@@ -24,7 +24,7 @@ A new product also has no history, and some of Telar's measurement assumes one: 
 1. **Wondeya is Telar's first installation.** Woku is no longer the first; Diego paused it as an installation (2026-11-26).
 2. **Wondeya is private.** Its repositories, vault, users, data and domain rules stay in its private repository. This repository names wondeya as the first installation and says it is a new product started from zero; nothing more (confirmed by Diego on 2026-11-26).
 3. **The method is applied by hand from wondeya's first commit:** vault, plans with a go, corrections ledger, decisions, evidence inventory. Wondeya's corrections and findings become the test data of `core-definition`, as woku's were meant to be; what they teach about Telar is written here as Telar findings, in Telar's words.
-4. **`core-definition` keeps its goal.** Its woku-specific scenarios (S3, the baseline test; S4, woku corrections) are retargeted to wondeya in a new iteration, v2, once this ADR is accepted. v1 keeps the status it reached.
+4. **`core-definition` keeps its goal.** Its woku-specific scenarios (S1, a woku work item; S3, the baseline test; S4, woku corrections) are retargeted to wondeya in a new iteration, [v2](../projects/core-definition/v2/PLAN.md). v1 keeps the status it reached.
 
 ## Consequences
 

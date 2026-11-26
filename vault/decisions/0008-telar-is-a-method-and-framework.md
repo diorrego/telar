@@ -3,7 +3,7 @@ id: ADR-0008
 status: accepted
 date: 2026-11-24
 decided_by: diego
-superseded_by:
+superseded_by: "0010-first-installation-is-a-new-project.md (decision 2, and decision 3 for the first installation)"
 ---
 
 # ADR-0008: Telar is a method and framework; woku first; core defined by a project

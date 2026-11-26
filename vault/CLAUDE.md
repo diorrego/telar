@@ -35,7 +35,7 @@ The vault is **documentation, not code**. It holds the thinking behind Telar; th
 - `evidence/` is the record of the research Telar comes from ([ADR 0009](decisions/0009-research-evidence-in-the-vault.md)). Read the relevant items before proposing anything; a diagnosis lists what it read (`projects/CLAUDE.md`).
 - Each file starts with its provenance: what it was translated from, when, and where the original is kept.
 - Evidence is faithful: never summarize, reword or "improve" it. The only allowed edits fix a translation error or a missed redaction, and each one is noted in `evidence/README.md`.
-- The repository is public: absolute local paths, private links and woku-internal details (paths, commit hashes, repository names) are redacted as `[redacted: reason]`.
+- The repository is public: absolute local paths, private links and installation-internal details (paths, commit hashes, repository names) are redacted as `[redacted: reason]`.
 - New evidence (a new research conversation or document) is added with the same conventions and a row in the index, in the same commit.
 
 ## Frontmatter is the state

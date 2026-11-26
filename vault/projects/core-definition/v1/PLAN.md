@@ -2,7 +2,7 @@
 status: proposed
 origin: diego
 updated: 2026-11-24
-superseded_by:
+superseded_by: ../v2/PLAN.md
 ---
 
 # Plan: core-definition v1
@@ -108,3 +108,4 @@ Each phase ends with a document in this folder that Diego reviews. The next phas
 - 2026-11-24: Phase 0 done: evidence translated into `vault/evidence/`, diagnosis written. Plan written. Status `proposed`.
 - 2026-11-26: Diego changed the first installation from woku to wondeya, a new private project started from zero. [ADR 0010](../../../decisions/0010-first-installation-is-a-new-project.md) is `proposed`. If it is accepted, a v2 retargets S3 and S4 to wondeya and adds the question of what "the current way of working" means in a project with no history; this iteration keeps its status.
 - 2026-11-26: Diego paused woku as an installation and confirmed that this repository names wondeya only as a new product started from zero. Asked whether the first installation does research before building, he said research "is always part of Telar's framework and method" (translated). This bears on D3 here, which asks whether research is its own stage; D3 is not marked decided. S1 here also walks "a woku work item", which ADR 0010 does not retarget; v2 must retarget S1 as well (C-0004 session, 2026-11-26).
+- 2026-11-26: Diego accepted ADR 0010. Superseded by [v2](../v2/PLAN.md), which retargets S1, S3 and S4 to the new first installation; this iteration keeps the status it reached (`proposed`).

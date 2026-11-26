@@ -4,13 +4,13 @@ Instructions for coding agents working in this repository. `AGENTS.md` is a syml
 
 ## What Telar is
 
-Telar is a method, and the open framework that implements it, with which an agent-assisted software workshop models its own rules. Woku is the first and, for now, only installation; Telar is built by serving woku and keeps abstracting what is generic. Woku-internal details never enter this public repository ([ADR 0008](vault/decisions/0008-telar-is-a-method-and-framework.md)).
+Telar is a method, and the open framework that implements it, with which an agent-assisted software workshop models its own rules. Wondeya, a new product started from zero, is the first and, for now, only installation; woku is paused. Telar is built by serving its installation and keeps abstracting what is generic. An installation's internal details never enter this public repository; about wondeya, this repository says only that it is a new product started from zero ([ADR 0008](vault/decisions/0008-telar-is-a-method-and-framework.md), [ADR 0010](vault/decisions/0010-first-installation-is-a-new-project.md)).
 
 `vault/foundations/vision.md` and `vault/foundations/principles.md` are the product definition. Read them before proposing anything.
 
 ## Current phase: documentation only
 
-There is **no code** in this repository, and none is written until a plan in `vault/projects/` has `status: active` and its current phase calls for code ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). Until then the work is research synthesis, decisions, diagnoses and plans. The current project is [`core-definition`](vault/projects/core-definition/v1/PLAN.md). If a task seems to need code or structure in `core/`, write or update the plan instead and stop there.
+There is **no code** in this repository, and none is written until a plan in `vault/projects/` has `status: active` and its current phase calls for code ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). Until then the work is research synthesis, decisions, diagnoses and plans. The current project is [`core-definition`](vault/projects/core-definition/v2/PLAN.md). If a task seems to need code or structure in `core/`, write or update the plan instead and stop there.
 
 ## Repository map
 

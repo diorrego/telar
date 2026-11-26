@@ -73,7 +73,7 @@ Keep this table updated when a project is created or an iteration changes state.
 
 | Project | What it is | State |
 |---|---|---|
-| [`core-definition`](core-definition/v1/PLAN.md) | Define what the core must contain: the non-negotiables from research to production, each classified as Telar invariant, Telar mechanism with project values, project baseline or project only; woku as the test case | v1 `proposed` 2026-11-24: evidence translated into the vault and diagnosis written (phase 0); waiting for Diego's go |
+| [`core-definition`](core-definition/v2/PLAN.md) | Define what the core must contain: the non-negotiables from research to production, each classified as Telar invariant, Telar mechanism with project values, project baseline or project only; the first installation (wondeya) as the test case | v2 `proposed` 2026-11-26 (retargets v1 to the new first installation, ADR 0010); v1 superseded |
 
 ## Rules when working here
 

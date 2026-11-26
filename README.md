@@ -1,8 +1,8 @@
 # Telar
 
-Telar is a method, and the open framework that implements it, with which an agent-assisted software workshop models its own rules: who can start work, what must be approved, what an agent may touch, what counts as done. Each rule is written down, placed at the layer that enforces it, and measured. Woku is the first installation.
+Telar is a method, and the open framework that implements it, with which an agent-assisted software workshop models its own rules: who can start work, what must be approved, what an agent may touch, what counts as done. Each rule is written down, placed at the layer that enforces it, and measured. The first installation is wondeya, a new product started from zero ([ADR 0010](vault/decisions/0010-first-installation-is-a-new-project.md)).
 
-> **Status: design phase, documentation only.** There is no code yet ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). The current project, [`core-definition`](vault/projects/core-definition/v1/PLAN.md), defines what the core must contain before any of it is built.
+> **Status: design phase, documentation only.** There is no code yet ([ADR 0005](vault/decisions/0005-documentation-before-code.md)). The current project, [`core-definition`](vault/projects/core-definition/v2/PLAN.md), defines what the core must contain before any of it is built.
 
 ## The idea
 

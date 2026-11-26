@@ -11,6 +11,6 @@ Architecture decision records. One file per decision, numbered, never renumbered
 | [0005](0005-documentation-before-code.md) | Documentation before code | accepted |
 | [0006](0006-workshop-before-factory.md) | Workshop before factory: three stages | proposed |
 | [0007](0007-license-apache-2.md) | License: Apache-2.0 | accepted |
-| [0008](0008-telar-is-a-method-and-framework.md) | Telar is a method and framework; woku first; core defined by a project | accepted |
+| [0008](0008-telar-is-a-method-and-framework.md) | Telar is a method and framework; woku first; core defined by a project | accepted; decision 2 superseded by 0010 |
 | [0009](0009-research-evidence-in-the-vault.md) | Research evidence lives in the vault, translated | accepted |
-| [0010](0010-first-installation-is-a-new-project.md) | The first installation is a new project, wondeya; woku waits | proposed |
+| [0010](0010-first-installation-is-a-new-project.md) | The first installation is a new project, wondeya; woku waits | accepted |

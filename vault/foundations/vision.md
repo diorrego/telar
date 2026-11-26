@@ -35,11 +35,12 @@ An installation is a workshop that uses Telar to model its rules.
 
 | Installation | Role | Status |
 |---|---|---|
-| woku | First installation and the use case Telar is built for. Telar keeps abstracting what is generic out of what woku needs | Current, and the only one for now |
+| wondeya | First installation: a new product started from zero, built with Telar from its first commit. Telar keeps abstracting what is generic out of what it needs ([ADR 0010](../decisions/0010-first-installation-is-a-new-project.md)) | Current, and the only one for now |
+| woku | An existing product with its own history: the case of a running workshop adopting Telar | Paused ([ADR 0010](../decisions/0010-first-installation-is-a-new-project.md)) |
 | Telar itself | Telar developed with Telar | Later. Meanwhile this repository uses the method by hand: plans with a go, corrections ledger, decisions |
 | A public example project | Proof that any workshop can adopt Telar from the README alone | Later |
 
-Woku's rules, repositories and data stay in woku's private repositories. This repository holds only what is generic.
+An installation's rules, repositories and data stay in its private repositories. This repository holds only what is generic.
 
 ## What Telar is
 
