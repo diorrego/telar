@@ -5,7 +5,7 @@ Dynamic views (Dataview plugin in Obsidian). The state lives in each note's fron
 Without Obsidian, from the vault root:
 
 ```sh
-grep -l "^status: proposed" projects/*/*/PLAN.md                    # plans waiting for a go (change the status as needed)
+grep -l "^status: proposed" projects/*/*/PLAN.md | xargs grep -L "^superseded_by: *[^[:space:]]"   # plans waiting for a go, without superseded iterations (change the status as needed)
 grep -lE "^status: (open|triaged|fixing|fixed)" qa/findings/*.md    # findings not closed
 grep -l "^status: logged" qa/corrections/*.md                       # corrections not yet encoded
 grep -l "^status: proposed" decisions/*.md                          # decisions waiting for Diego
@@ -16,7 +16,7 @@ grep -l "^status: proposed" decisions/*.md                          # decisions 
 ```dataview
 TABLE origin, updated
 FROM "projects"
-WHERE file.name = "PLAN" AND status = "proposed"
+WHERE file.name = "PLAN" AND status = "proposed" AND !superseded_by
 SORT updated ASC
 ```
 
